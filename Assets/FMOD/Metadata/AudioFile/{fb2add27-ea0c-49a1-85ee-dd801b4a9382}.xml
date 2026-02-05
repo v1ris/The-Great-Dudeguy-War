@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{fb2add27-ea0c-49a1-85ee-dd801b4a9382}">
+		<property name="assetPath">
+			<value>SFX/fuckass_talk.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.125</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{fa70df86-51a8-4bf0-96f8-dc759891cc57}</destination>
+		</relationship>
+	</object>
+</objects>

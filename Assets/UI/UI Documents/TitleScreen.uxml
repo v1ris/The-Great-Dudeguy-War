@@ -1,0 +1,9 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/UI%20StyleSheets/fade.uss?fileID=7433441132597879392&amp;guid=ca9a1ff1e9cbb4aac995abe645f7410a&amp;type=3#fade"/>
+    <ui:VisualElement name="" style="flex-grow: 1;">
+        <ui:Label text="the great dudeguy war" name="title" style="align-self: center; font-size: 100px; -unity-text-outline-color: rgb(0, 0, 0); color: rgb(255, 255, 255); top: 30%; position: absolute;"/>
+        <ui:Button text="Play" name="playbutton" style="font-size: 60px; align-self: center; justify-content: flex-start; position: absolute; top: 60%;"/>
+        <ui:Button text="Do Not Play" name="quitbutton" style="font-size: 60px; align-self: center; top: 70%; position: absolute;"/>
+    </ui:VisualElement>
+    <ui:VisualElement enabled="true" name="fade" style="flex-grow: 1; position: absolute; height: 1080px; width: 1920px; background-color: rgb(0, 0, 0); transition-property: opacity; transition-duration: 2s; top: auto;"/>
+</ui:UXML>

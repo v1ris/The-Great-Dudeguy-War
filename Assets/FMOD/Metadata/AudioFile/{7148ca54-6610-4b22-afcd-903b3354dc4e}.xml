@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{7148ca54-6610-4b22-afcd-903b3354dc4e}">
+		<property name="assetPath">
+			<value>Music/wiseguy_theme.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>29.690729166666667</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{fa70df86-51a8-4bf0-96f8-dc759891cc57}</destination>
+		</relationship>
+	</object>
+</objects>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="ParameterPreset" id="{e7c566a4-6db6-4bb3-a04e-5a676f41766c}">
+		<property name="name">
+			<value>Fadeout</value>
+		</property>
+		<relationship name="folder">
+			<destination>{6ac6bde4-e562-4376-ab8a-f6e36a3792c2}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{40fe4359-6d65-407a-9020-fc11335b2c99}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{40fe4359-6d65-407a-9020-fc11335b2c99}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+		<relationship name="modulators">
+			<destination>{fd2f5546-cb53-4336-98e1-be8721cab002}</destination>
+		</relationship>
+	</object>
+	<object class="SeekModulator" id="{fd2f5546-cb53-4336-98e1-be8721cab002}">
+		<property name="nameOfPropertyBeingModulated">
+			<value>cursorPosition</value>
+		</property>
+		<property name="speedAscending">
+			<value>0.5</value>
+		</property>
+	</object>
+</objects>
