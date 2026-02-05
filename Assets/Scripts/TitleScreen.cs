@@ -10,15 +10,8 @@ public class TitleScreen : MonoBehaviour
     private Button playButton;
     private Button quitButton;
     private VisualElement fade;
-    private LoadingState loadingState;
+    private bool fading;
     private GameObject bgm;
-
-    public enum LoadingState
-    {
-        Waiting,
-        Fading,
-        Faded
-    }
 
     void Start()
     {
@@ -29,8 +22,7 @@ public class TitleScreen : MonoBehaviour
         quitButton.RegisterCallback<ClickEvent>(ClickQuit);
         fade = ui.rootVisualElement.Q<VisualElement>("fade");
         fade.style.display = DisplayStyle.None;
-        
-        loadingState = LoadingState.Waiting;
+        fading = false;
         
         // audio
         bgm = audioManager.CreateAudioInstance(RuntimeManager.PathToEventReference("event:/music/titlescreen"));
@@ -40,7 +32,7 @@ public class TitleScreen : MonoBehaviour
     {
         bgm.GetComponent<StudioEventEmitter>().SetParameter("Fadeout", 1);
         fade.style.display = DisplayStyle.Flex;
-        loadingState = LoadingState.Fading;
+        fading = true;
         fade.AddToClassList("fade-out");
     }
 
@@ -54,7 +46,7 @@ public class TitleScreen : MonoBehaviour
     private int fadingTimerMax = 100;
     void FixedUpdate()
     {
-        if (loadingState == LoadingState.Fading)
+        if (fading)
         {
             fadingTimer++;
             // do something with a timer, fade out music and screen for 2 seconds
@@ -63,7 +55,7 @@ public class TitleScreen : MonoBehaviour
 
         if (fadingTimer == fadingTimerMax)
         {
-            SceneManager.LoadScene("Level");
+            SceneManager.LoadScene("Level 1");
         }
     }
 }

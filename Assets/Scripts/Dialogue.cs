@@ -38,7 +38,6 @@ public class Dialogue : MonoBehaviour
     
     // Scene changing
     private bool fading;
-    private int currentLevel;
     
     // Scroll Speed
     private int fixedUpdateTimer = 0;
@@ -138,7 +137,7 @@ public class Dialogue : MonoBehaviour
             {
                 introBackground.style.display = DisplayStyle.None;
                 audioManager.DestroyAudioInstance(bgm);
-                gameManager.StartLevel(currentLevel);
+                gameManager.StartLevel(gameManager.currentLevel);
                 gameObject.SetActive(false);
             }
         }
@@ -260,7 +259,7 @@ public class Dialogue : MonoBehaviour
                 fade.style.display = DisplayStyle.Flex;
                 fade.AddToClassList("fade-out");
                 fading = true;
-                currentLevel = 1;
+                gameManager.currentLevel = 1;
                 break;
         }
     }
