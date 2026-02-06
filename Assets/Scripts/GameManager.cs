@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UIElements;
@@ -17,9 +18,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Spawner spawner;
     
     [SerializeField] private PolygonCollider2D enemyPath;
-    [SerializeField] private GameObject pathPoint1;
-    [SerializeField] private GameObject pathPoint2;
-    [SerializeField] private GameObject pathPoint3;
+    public GameObject[] pathPoints;
 
     public int currentLevel;
 
@@ -48,18 +47,25 @@ public class GameManager : MonoBehaviour
         fade.AddToClassList("fade-in");
         if (level == 1)
         {
+            pathPoints = GameObject.FindGameObjectsWithTag("Level 1 Pathpoint");
+            print(pathPoints.Length);
+            print(pathPoints[0]);
             lvl1Background.enabled = true;
-            // gameobject spawner method: start level(1)
+            
+            // Temp until wave button is implemented
+            spawner.StartWave(level);
         }
 
         if (level == 2)
         {
+            pathPoints = GameObject.FindGameObjectsWithTag("Level 2 Pathpoint");
             lvl2Background.enabled = true;
             // gameobject spawner method: start level 2
         }
 
         if (level == 3)
         {
+            pathPoints = GameObject.FindGameObjectsWithTag("Level 3 Pathpoint");
             lvl3Background.enabled = true;
             // gameobject spawner method: start level 3
         }

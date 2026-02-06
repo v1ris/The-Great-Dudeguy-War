@@ -1,20 +1,61 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    public void StartLevel(int level)
+    private int spawnWaitTime;
+    private int spawnIndex;
+    
+    private int waveIndex;
+    private bool waveActive;
+    
+    private List<List<GameObject>> enemyList;
+
+    [SerializeField] private GameObject circleDude;
+    [SerializeField] private GameObject triangleDude;
+    [SerializeField] private GameObject squareDude;
+    
+    public void StartWave(int level)
     {
         if (level == 1)
         {
-            // start waves
+            enemyList  = new List<List<GameObject>>();
+            List<GameObject> waveList = new List<GameObject>();
+            waveList.Add(circleDude);
+            waveList.Add(circleDude);
+            waveList.Add(circleDude);
+            waveList.Add(circleDude);
+            waveList.Add(circleDude);
+            waveActive = true;
+            enemyList.Add(waveList);
+            
+            
+            //Instantiate(circleDude, transform.position, Quaternion.identity);
         }
         if (level == 2)
         {
+
             // start waves
         }
         if (level == 3)
         {
+
             // start waves
+        }
+    }
+
+    void FixedUpdate()
+    {
+        if (waveActive)
+        {
+            spawnWaitTime++;
+            if (spawnWaitTime == 50)
+            {
+                Instantiate(enemyList[waveIndex][spawnIndex], transform.position, Quaternion.identity);
+                spawnWaitTime = 0;
+                spawnIndex++;
+            }
         }
     }
 }
