@@ -10,7 +10,6 @@ public class Enemy : MonoBehaviour
     public int droppedMoney;
     
     // pathing
-    private float distance;
     private int pathPointIndex;
     private GameManager gameManager;
     private PolygonCollider2D hitbox;
@@ -24,9 +23,11 @@ public class Enemy : MonoBehaviour
     
     void Update()
     {
-        // move towards path point
-        distance = moveSpeed * Time.deltaTime;
+        // pathing
+        // getting temp values
+        float distance = moveSpeed * Time.deltaTime;
         Vector2 pathPointTransform = gameManager.RetrievePathPoints()[pathPointIndex].transform.position;
+        // move towards path point
         transform.position = Vector2.MoveTowards(transform.position, pathPointTransform, distance);
         if ((Mathf.Approximately(transform.position.x, pathPointTransform.x)) && (Mathf.Approximately(transform.position.y, pathPointTransform.y)))
         {
@@ -37,12 +38,12 @@ public class Enemy : MonoBehaviour
             }
         }
         
-
-
-        // if bullet hits
-        // health - 1
-        // destroy other
-        // if health == 0
-        // destroy
+        // bullet collision
+            // if bullet hits
+                // health - 1
+                // destroy other
+            // if health == 0
+                // give money
+                // destroy this
     }
 }
