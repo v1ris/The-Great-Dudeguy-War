@@ -808,6 +808,22 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 245928796}
     - target: {fileID: 7466582721100974192, guid: e40f8425d94bd437cacc3c186390156e, type: 3}
+      propertyPath: pathpoint1
+      value: 
+      objectReference: {fileID: 394354472}
+    - target: {fileID: 7466582721100974192, guid: e40f8425d94bd437cacc3c186390156e, type: 3}
+      propertyPath: pathpoint2
+      value: 
+      objectReference: {fileID: 403535387}
+    - target: {fileID: 7466582721100974192, guid: e40f8425d94bd437cacc3c186390156e, type: 3}
+      propertyPath: pathpoint3
+      value: 
+      objectReference: {fileID: 245928796}
+    - target: {fileID: 7466582721100974192, guid: e40f8425d94bd437cacc3c186390156e, type: 3}
+      propertyPath: lvl1Pathing
+      value: 
+      objectReference: {fileID: 1797150186}
+    - target: {fileID: 7466582721100974192, guid: e40f8425d94bd437cacc3c186390156e, type: 3}
       propertyPath: lvl1Background
       value: 
       objectReference: {fileID: 727442187}
@@ -891,11 +907,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3355257033211917388, guid: 47634fbcccf824033955964b7403452b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -4.2
       objectReference: {fileID: 0}
     - target: {fileID: 3355257033211917388, guid: 47634fbcccf824033955964b7403452b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: -6
       objectReference: {fileID: 0}
     - target: {fileID: 3355257033211917388, guid: 47634fbcccf824033955964b7403452b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1007,6 +1023,10 @@ PrefabInstance:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 1997402924}
+    - target: {fileID: 3611563242411828952, guid: 414e41df963ed417aa79b90ac3b3b030, type: 3}
+      propertyPath: scrollSpeed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3611563242411828952, guid: 414e41df963ed417aa79b90ac3b3b030, type: 3}
       propertyPath: audioManager
       value: 

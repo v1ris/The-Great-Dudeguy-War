@@ -13,32 +13,36 @@ public class Enemy : MonoBehaviour
     private float distance;
     private int pathPointIndex;
     private GameManager gameManager;
+    private PolygonCollider2D hitbox;
     
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         pathPointIndex = 0;
         gameManager = FindFirstObjectByType<GameManager>();
-            
-        // move toward next path point
-        // (something) * moveSpeed
+        hitbox = gameObject.GetComponent<PolygonCollider2D>();
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         // move towards path point
-        // 
-
         distance = moveSpeed * Time.deltaTime;
-        print(gameManager.pathPoints.Length);
-        print(gameManager.pathPoints[pathPointIndex]);
-        transform.position = Vector2.MoveTowards(transform.position, gameManager.pathPoints[pathPointIndex].transform.position, distance);
+        Vector2 pathPointTransform = gameManager.RetrievePathPoints()[pathPointIndex].transform.position;
+        transform.position = Vector2.MoveTowards(transform.position, pathPointTransform, distance);
+        if ((Mathf.Approximately(transform.position.x, pathPointTransform.x)) && (Mathf.Approximately(transform.position.y, pathPointTransform.y)))
+        {
+            pathPointIndex++;
+            if (pathPointIndex >= gameManager.RetrievePathPoints().Length)
+            {
+                Destroy(gameObject);
+            }
+        }
         
+
+
         // if bullet hits
         // health - 1
         // destroy other
-            // if health == 0
-            // destroy
+        // if health == 0
+        // destroy
     }
 }

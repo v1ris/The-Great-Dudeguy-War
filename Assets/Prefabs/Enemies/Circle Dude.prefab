@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: -3825927689586843485}
   - component: {fileID: 8713797611240104033}
   - component: {fileID: 5892589873121869948}
+  - component: {fileID: 8812127429314828562}
   m_Layer: 0
   m_Name: Circle Dude
   m_TagString: Untagged
@@ -108,7 +109,6 @@ MonoBehaviour:
   health: 0
   moveSpeed: 0
   droppedMoney: 0
-  gameManager: {fileID: 7466582721100974192, guid: e40f8425d94bd437cacc3c186390156e, type: 3}
 --- !u!114 &5892589873121869948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,3 +121,58 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad755f68e3c964f6ea4f4533df0dada8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CircleDude
+--- !u!60 &8812127429314828562
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8958821937230525550}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.33, y: 0.33}
+    newSize: {x: 0.33, y: 0.33}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.089487776, y: 0.16169001}
+      - {x: -0.17161994, y: 0.050595492}
+      - {x: -0.17079246, y: -0.049627915}
+      - {x: -0.10272769, y: -0.16499998}
+      - {x: 0.105, y: -0.16499999}
+      - {x: 0.16996494, y: -0.042797767}
+      - {x: 0.1674825, y: 0.058940522}
+      - {x: 0.09514013, y: 0.1625175}
+  m_UseDelaunayMesh: 1

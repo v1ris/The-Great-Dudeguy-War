@@ -45,6 +45,7 @@ public class Spawner : MonoBehaviour
         }
     }
 
+    // Enemy Spawning
     void FixedUpdate()
     {
         if (waveActive)
@@ -55,6 +56,12 @@ public class Spawner : MonoBehaviour
                 Instantiate(enemyList[waveIndex][spawnIndex], transform.position, Quaternion.identity);
                 spawnWaitTime = 0;
                 spawnIndex++;
+            }
+            if (spawnIndex > enemyList[waveIndex].Count - 1)
+            {
+                spawnWaitTime = 0;
+                spawnIndex = 0;
+                waveActive = false;
             }
         }
     }
