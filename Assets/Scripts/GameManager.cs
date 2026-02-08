@@ -55,10 +55,6 @@ public class GameManager : MonoBehaviour
         fade.AddToClassList("fade-in");
         if (level == 1)
         {
-            // pathPoints = GameObject.FindGameObjectsWithTag("Level 1 Pathpoint");
-            // Array.Sort(pathPoints);
-
-
             lvl1Background.enabled = true;
             
             // Temp until wave button is implemented
