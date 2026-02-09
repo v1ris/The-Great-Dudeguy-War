@@ -137,7 +137,7 @@ public class Dialogue : MonoBehaviour
             {
                 introBackground.style.display = DisplayStyle.None;
                 audioManager.DestroyAudioInstance(bgm);
-                gameManager.StartLevel(gameManager.currentLevel);
+                gameManager.StartLevel(GameManager.CurrentLevel);
                 gameObject.SetActive(false);
             }
         }
@@ -259,7 +259,7 @@ public class Dialogue : MonoBehaviour
                 fade.style.display = DisplayStyle.Flex;
                 fade.AddToClassList("fade-out");
                 fading = true;
-                gameManager.currentLevel = 1;
+                GameManager.CurrentLevel = 1;
                 break;
         }
     }

@@ -71,7 +71,7 @@ public class Ally : MonoBehaviour
         // starts timer when there is no enemy in sight
         if (bulletTimer < attackSpeed)
         {
-            bulletTimer += Time.deltaTime;
+            bulletTimer += Time.deltaTime * GameManager.GameSpeed;
         }
         // makes sure there is some target to choose from
         if (targets.Count != 0)

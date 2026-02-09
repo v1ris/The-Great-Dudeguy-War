@@ -83,6 +83,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8509114650715825780}
   - component: {fileID: 4871317304246700255}
+  - component: {fileID: 5156941851761044287}
   m_Layer: 5
   m_Name: BattleUI
   m_TagString: Untagged
@@ -128,6 +129,21 @@ MonoBehaviour:
   m_PivotReferenceSize: 0
   m_Pivot: 0
   m_WorldSpaceCollider: {fileID: 0}
+--- !u!114 &5156941851761044287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4467107687328880994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35631385f8d024e42a5957027efc3a08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BattleUI
+  waveStart: {fileID: 2800000, guid: ad4da9681365242f3be89f24a31b97bf, type: 3}
+  wavePause: {fileID: 2800000, guid: 3cfbdf4539d024beb98ca22eb03dbb45, type: 3}
+  waveFastForward: {fileID: 2800000, guid: e8f5550bb5c644702b1edd37eb3423e7, type: 3}
 --- !u!1 &4836640090645697591
 GameObject:
   m_ObjectHideFlags: 0

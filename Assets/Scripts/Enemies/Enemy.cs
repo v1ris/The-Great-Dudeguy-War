@@ -28,7 +28,7 @@ public class Enemy : MonoBehaviour
         float distance = moveSpeed * Time.deltaTime;
         Vector2 pathPointTransform = gameManager.RetrievePathPoints()[pathPointIndex].transform.position;
         // move towards path point
-        transform.position = Vector2.MoveTowards(transform.position, pathPointTransform, distance);
+        transform.position = Vector2.MoveTowards(transform.position, pathPointTransform, distance * GameManager.GameSpeed);
         if ((Mathf.Approximately(transform.position.x, pathPointTransform.x)) && (Mathf.Approximately(transform.position.y, pathPointTransform.y)))
         {
             pathPointIndex++;
@@ -37,13 +37,11 @@ public class Enemy : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-        
-        // bullet collision
-            // if bullet hits
-                // health - 1
-                // destroy other
-            // if health == 0
-                // give money
-                // destroy this
+    }
+
+    void OnDestroy()
+    {
+        GameManager.Points += droppedMoney;
+        BattleUI.Points.text = "Points: \n" + GameManager.Points;
     }
 }

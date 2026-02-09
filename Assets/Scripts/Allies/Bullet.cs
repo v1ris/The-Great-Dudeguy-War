@@ -24,7 +24,7 @@ public class Bullet : MonoBehaviour
     {
         if (moving)
         {
-            transform.position = Vector2.MoveTowards(transform.position, targetPastPosition, speed * Time.deltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, targetPastPosition, speed * Time.deltaTime * GameManager.GameSpeed);
         }
     }
 

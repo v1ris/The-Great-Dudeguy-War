@@ -6,8 +6,9 @@ using UnityEngine.UIElements;
 
 public class GameManager : MonoBehaviour
 {
-    public int gameSpeed; // multiply into equation for any time-based function of the game; 0 is paused, 1 is normal, 2 is speedup button active
-
+    public static int GameSpeed; // multiply into equation for any time-based function of the game; 0 is paused, 1 is normal, 2 is speedup button active
+    public static int Points;
+    
     [SerializeField] private UIDocument battleUI;
     private VisualElement fade;
     private VisualElement screen;
@@ -24,8 +25,7 @@ public class GameManager : MonoBehaviour
     
     [SerializeField] private Spawner spawner;
     
-
-    public int currentLevel;
+    public static int CurrentLevel;
 
     void Start()
     {
@@ -37,17 +37,18 @@ public class GameManager : MonoBehaviour
         screen.style.display = DisplayStyle.None;
         fade = battleUI.rootVisualElement.Q<VisualElement>("fade");
         fade.AddToClassList("fade-complete");
-        
-        // if scene == lvl 1
-
-        
-
-        gameSpeed = 1;
+        GameSpeed = 1;
     }
 
-    void Update()
+    public enum GameState
     {
+        WaitingToStart,
+        WaveActive,
+        FastForwarding,
+        WavePaused
     }
+    
+    public GameState gameState = GameState.WaitingToStart;
 
     public void StartLevel(int level)
     {
@@ -56,23 +57,17 @@ public class GameManager : MonoBehaviour
         if (level == 1)
         {
             lvl1Background.enabled = true;
-            
-            // Temp until wave button is implemented
-            spawner.StartWave(level);
+            spawner.LoadWaves(level);
         }
-
         if (level == 2)
         {
-
             lvl2Background.enabled = true;
-            // gameobject spawner method: start level 2
+            spawner.LoadWaves(level);
         }
-
         if (level == 3)
         {
-
             lvl3Background.enabled = true;
-            // gameobject spawner method: start level 3
+            spawner.LoadWaves(level);
         }
     }
 
