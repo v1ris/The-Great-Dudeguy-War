@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8713797611240104033}
   - component: {fileID: 5892589873121869948}
   - component: {fileID: 8812127429314828562}
+  - component: {fileID: -7650865443658845635}
   m_Layer: 0
   m_Name: Circle Dude
   m_TagString: Enemy
@@ -176,3 +177,30 @@ PolygonCollider2D:
       - {x: 0.1674825, y: 0.058940522}
       - {x: 0.09514013, y: 0.1625175}
   m_UseDelaunayMesh: 1
+--- !u!50 &-7650865443658845635
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8958821937230525550}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

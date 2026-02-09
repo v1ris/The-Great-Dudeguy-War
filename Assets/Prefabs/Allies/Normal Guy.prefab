@@ -239,6 +239,7 @@ MonoBehaviour:
   sellprice: 0
   attackRange: {fileID: 2866314082154789257}
   attackRangeVisual: {fileID: 8237752478532684708}
+  bullet: {fileID: 7694042814437570017, guid: 1e861627f12f0428e8304b93b0b49f38, type: 3}
 --- !u!114 &8988769917772066399
 MonoBehaviour:
   m_ObjectHideFlags: 0

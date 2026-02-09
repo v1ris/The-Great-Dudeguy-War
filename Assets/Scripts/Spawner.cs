@@ -24,7 +24,7 @@ public class Spawner : MonoBehaviour
             enemyList  = new List<List<GameObject>>();
             List<GameObject> waveList = new List<GameObject>();
             waveList.Add(circleDude);
-            waveList.Add(circleDude2);
+            waveList.Add(circleDude);
             waveList.Add(circleDude);
             waveList.Add(circleDude);
             waveList.Add(circleDude);

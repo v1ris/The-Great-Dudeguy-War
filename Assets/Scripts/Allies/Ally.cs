@@ -4,20 +4,23 @@ using UnityEngine;
 public class Ally : MonoBehaviour
 {
     // stats
-    private int attackDamage;
-    private int attackSpeed;
+    public int attackDamage;
+    public int attackSpeed;
+    public int bulletTravelSpeed;
     public int price;
     public int sellprice;
     
     // targeting
-    private List<GameObject> targets;
-    private GameObject currentTarget;
+    public List<GameObject> targets;
+    public GameObject currentTarget;
     private float currentTargetX;
     private float currentTargetY;
     
     // components in child
-    [SerializeField] CircleCollider2D attackRange;
-    [SerializeField] SpriteRenderer attackRangeVisual;
+    [SerializeField] private CircleCollider2D attackRange;
+    [SerializeField] private SpriteRenderer attackRangeVisual;
+    [SerializeField] private GameObject bullet;
+    private GameObject shotBullet;
 
     public enum AttackMode
     {
@@ -32,8 +35,9 @@ public class Ally : MonoBehaviour
 
     void Start()
     {
-        attackRangeVisual.color = new Color(1, 1, 1, 0.3f);
+        attackRangeVisual.color = new Color(1, 1, 1, 0.1f);
         attackMode = AttackMode.Closest; // default attack mode to "closest"
+        targets = new List<GameObject>();
     }
     
     void OnTriggerEnter2D(Collider2D other)
@@ -49,9 +53,41 @@ public class Ally : MonoBehaviour
         }
     }
 
-    void FixedUpdate()
+    void OnTriggerExit2D(Collider2D other)
     {
+        if (other.gameObject.tag == "Enemy")
+        {
+            targets.Remove(other.gameObject);
+        }
+    }
+
+    private float bulletTimer;
+    void Update()
+    {
+        // target before attacking
+        Target();
+        
+        // attacking
+        // starts timer when there is no enemy in sight
+        if (bulletTimer < attackSpeed)
+        {
+            bulletTimer += Time.deltaTime;
+        }
         // makes sure there is some target to choose from
+        if (targets.Count != 0)
+        {
+            if (bulletTimer > attackSpeed)
+            {
+                shotBullet = Instantiate(bullet, transform.position, Quaternion.identity);
+                shotBullet.GetComponent<Bullet>().Shoot(attackDamage, bulletTravelSpeed, currentTarget, gameObject);
+                bulletTimer = 0f;
+            }
+        }
+    }
+
+    public void Target()
+    {
+        // first, makes sure there is some target to choose from
         if (targets.Count != 0)
         {
             // target closest
@@ -66,7 +102,6 @@ public class Ally : MonoBehaviour
                         currentTarget = targets[i];
                     }
                 }
-                print(currentTarget);
             }
             if (attackMode == AttackMode.First)
             {
