@@ -6,9 +6,12 @@ public class BattleUI : MonoBehaviour
     [SerializeField] private Texture2D waveStart;
     [SerializeField] private Texture2D wavePause;
     [SerializeField] private Texture2D waveFastForward;
+    public static Texture2D WaveStartSprite;
+    private bool fastForwarding;
     private UIDocument ui;
 
-    private Button waveButton;
+    public static Button WaveButton;
+    private Button fastForwardButton;
     private Button normalGuyButton;
     public static Label Points;
     
@@ -21,10 +24,17 @@ public class BattleUI : MonoBehaviour
         spawner = FindFirstObjectByType<Spawner>();
         
         ui = GetComponent<UIDocument>();
-        waveButton = ui.rootVisualElement.Q<Button>("waveButton");
-        waveButton.RegisterCallback<ClickEvent>(OnWaveButtonClicked);
+        
+        WaveButton = ui.rootVisualElement.Q<Button>("waveButton");
+        WaveButton.RegisterCallback<ClickEvent>(OnWaveButtonClicked);
+        WaveStartSprite = waveStart;
+        
+        fastForwardButton = ui.rootVisualElement.Q<Button>("fastForwardButton");
+        fastForwardButton.RegisterCallback<ClickEvent>(OnFastFowardButtonClicked);
+        
         normalGuyButton = ui.rootVisualElement.Q<Button>("normalGuyButton");
         normalGuyButton.RegisterCallback<ClickEvent>(OnGuyButtonClicked);
+        
         Points = ui.rootVisualElement.Q<Label>("points");
     }
 
@@ -37,32 +47,43 @@ public class BattleUI : MonoBehaviour
             Spawner.WaveIndex++;
             print(Spawner.WaveIndex);
             gameManager.gameState = GameManager.GameState.WaveActive;
-            GameManager.GameSpeed = 1;
-            waveButton.style.backgroundImage = new StyleBackground(Background.FromTexture2D(waveFastForward));
+            WaveButton.style.backgroundImage = new StyleBackground(Background.FromTexture2D(wavePause));
         }
         
-        // Controls Game Speed
+        // set paused
         else if (gameManager.gameState == GameManager.GameState.WaveActive)
-        {
-            gameManager.gameState = GameManager.GameState.FastForwarding;
-            GameManager.GameSpeed = 2;
-            waveButton.style.backgroundImage = new StyleBackground(Background.FromTexture2D(wavePause));
-        }
-        else if (gameManager.gameState == GameManager.GameState.FastForwarding)
         {
             gameManager.gameState = GameManager.GameState.WavePaused;
             GameManager.GameSpeed = 0;
-            waveButton.style.backgroundImage = new StyleBackground(Background.FromTexture2D(waveStart));
+            WaveButton.style.backgroundImage = new StyleBackground(Background.FromTexture2D(waveStart));
         }
+        // set active
         else // if game state == WavePaused
         {
             gameManager.gameState = GameManager.GameState.WaveActive;
             GameManager.GameSpeed = 1;
-            waveButton.style.backgroundImage = new StyleBackground(Background.FromTexture2D(waveFastForward));
+            WaveButton.style.backgroundImage = new StyleBackground(Background.FromTexture2D(wavePause));
         }
         print(gameManager.gameState);
     }
 
+    private void OnFastFowardButtonClicked(ClickEvent evt)
+    {
+        // turn on/off fast forward
+        if (gameManager.gameState == GameManager.GameState.WaveActive && !fastForwarding)
+        {
+            fastForwardButton.AddToClassList("change-tint");
+            GameManager.GameSpeed = 2;
+            fastForwarding = true;
+        }
+        else
+        {
+            GameManager.GameSpeed = 1;
+            fastForwardButton.RemoveFromClassList("change-tint");
+            fastForwarding = false;
+        }
+    }
+    
     private void OnGuyButtonClicked(ClickEvent evt)
     {
         // create guy at mouse position

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Spawner : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class Spawner : MonoBehaviour
     public static bool SpawningActive = false;
     
     private List<List<GameObject>> enemyList;
+    public static int DeadEnemies;
 
     [SerializeField] private GameObject circleDude;
     [SerializeField] private GameObject circleDude2;
@@ -21,6 +23,7 @@ public class Spawner : MonoBehaviour
     void Start()
     {
         WaveIndex = -1;
+        DeadEnemies = 0;
     }
     
     public void LoadWaves(int level)
@@ -68,11 +71,11 @@ public class Spawner : MonoBehaviour
             enemyList[4].Add(circleDude);
             enemyList[4].Add(circleDude);
             
-            print(enemyList[0].Count);
-            print(enemyList[1].Count);
-            print(enemyList[2].Count);
-            print(enemyList[3].Count);
-            print(enemyList[4].Count);
+            // print(enemyList[0].Count);
+            // print(enemyList[1].Count);
+            // print(enemyList[2].Count);
+            // print(enemyList[3].Count);
+            // print(enemyList[4].Count);
         }
         if (level == 2)
         {
@@ -104,23 +107,15 @@ public class Spawner : MonoBehaviour
                 }
             }
         }
-        else // check to see if each enemy in wavelist is dead
+        else if (gameManager.gameState != GameManager.GameState.WaitingToStart) // check to see if each enemy in wavelist is dead
         {
-            if (gameManager.gameState != GameManager.GameState.WaitingToStart)
+            print(DeadEnemies);
+            if (DeadEnemies == enemyList[WaveIndex].Count)
             {
-                for (int i = 0; i < enemyList[WaveIndex].Count; i++)
-                {
-                    if (!enemyList[WaveIndex][i].activeInHierarchy)
-                    {
-                        i++;
-                    }
-                    if (i == enemyList[WaveIndex].Count)
-                    {
-                        print("waiting to start");
-                        gameManager.gameState = GameManager.GameState.WaitingToStart;
-                        print(WaveIndex);
-                    }
-                }
+                DeadEnemies = 0;
+                print("waiting to start");
+                gameManager.gameState = GameManager.GameState.WaitingToStart;
+                BattleUI.WaveButton.style.backgroundImage = new StyleBackground(Background.FromTexture2D(BattleUI.WaveStartSprite));
             }
         }
     }

@@ -44,7 +44,6 @@ public class GameManager : MonoBehaviour
     {
         WaitingToStart,
         WaveActive,
-        FastForwarding,
         WavePaused
     }
     

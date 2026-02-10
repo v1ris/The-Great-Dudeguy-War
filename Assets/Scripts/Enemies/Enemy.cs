@@ -41,6 +41,7 @@ public class Enemy : MonoBehaviour
 
     void OnDestroy()
     {
+        Spawner.DeadEnemies++;
         GameManager.Points += droppedMoney;
         BattleUI.Points.text = "Points: \n" + GameManager.Points;
     }
