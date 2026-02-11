@@ -12,8 +12,10 @@ public class BattleUI : MonoBehaviour
 
     public static Button WaveButton;
     private Button fastForwardButton;
-    private Button normalGuyButton;
     public static Label Points;
+    
+    private Button normalGuyButton;
+    [SerializeField] GameObject normalGuy;
     
     private GameManager gameManager;
     private Spawner spawner;
@@ -86,7 +88,7 @@ public class BattleUI : MonoBehaviour
     
     private void OnGuyButtonClicked(ClickEvent evt)
     {
-        // create guy at mouse position
+        GameObject guy = Instantiate(normalGuy, Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity);
     }
 }
 

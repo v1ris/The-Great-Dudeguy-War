@@ -32,7 +32,7 @@ public class Dialogue : MonoBehaviour
     private string scrollingText; // dialogue displayed character by character
     private string fullText; // actual line to check to know when to stop iterating
     private int currentCharacter;
-    private int currentLine; // which dialogue switch case is selected
+    [SerializeField] private int currentLine; // which dialogue switch case is selected
     private bool isScrolling;
     private bool nameEntryActive;
     
