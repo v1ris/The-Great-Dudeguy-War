@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
 public class BattleUI : MonoBehaviour
@@ -88,7 +89,7 @@ public class BattleUI : MonoBehaviour
     
     private void OnGuyButtonClicked(ClickEvent evt)
     {
-        GameObject guy = Instantiate(normalGuy, Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity);
+        GameObject guy = Instantiate(normalGuy, Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()), Quaternion.identity);
     }
 }
 
