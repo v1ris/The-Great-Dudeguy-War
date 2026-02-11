@@ -36,6 +36,7 @@ public class Bullet : MonoBehaviour
             other.gameObject.GetComponent<Enemy>().health -= damage;
             if (other.gameObject.GetComponent<Enemy>().health == 0)
             {
+                // mark enemy as dead and untargetable
                 Ally allyClass = shooter.GetComponent<Ally>();
                 allyClass.targets.Remove(other.gameObject);
                 // makes sure current target is not null

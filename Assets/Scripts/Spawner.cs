@@ -9,7 +9,7 @@ public class Spawner : MonoBehaviour
     private int spawnIndex;
     
     public static int WaveIndex;
-    public static bool SpawningActive = false;
+    public static bool SpawningActive;
     
     private List<List<GameObject>> enemyList;
     public static int DeadEnemies;
@@ -24,6 +24,7 @@ public class Spawner : MonoBehaviour
     {
         WaveIndex = -1;
         DeadEnemies = 0;
+        SpawningActive = false;
     }
     
     public void LoadWaves(int level)

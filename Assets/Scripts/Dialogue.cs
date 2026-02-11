@@ -59,8 +59,8 @@ public class Dialogue : MonoBehaviour
         introBackground.style.display = DisplayStyle.Flex;
         
         // initializing variables for dialogue
-        currentLine = 0;
-        currentCharacter = 0;
+        // currentLine = 0;
+        // currentCharacter = 0;
         IterateDialogue(0);
         
         // setting up the scene

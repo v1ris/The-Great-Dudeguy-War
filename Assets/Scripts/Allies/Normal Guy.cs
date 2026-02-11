@@ -11,7 +11,7 @@ public class NormalGuy : MonoBehaviour
         baseScript.sellprice = 50;
         baseScript.attackDamage = 1;
         baseScript.attackSpeed = 1;
-        baseScript.bulletTravelSpeed = 2;
+        baseScript.bulletTravelSpeed = 3;
     }
 
     // Update is called once per frame

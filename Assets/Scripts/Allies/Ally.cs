@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Ally : MonoBehaviour
 {
@@ -21,6 +22,9 @@ public class Ally : MonoBehaviour
     [SerializeField] private SpriteRenderer attackRangeVisual;
     [SerializeField] private GameObject bullet;
     private GameObject shotBullet;
+    
+    // placing unit on field
+    private bool hasBeenPlaced = false;
 
     public enum AttackMode
     {
@@ -35,9 +39,10 @@ public class Ally : MonoBehaviour
 
     void Start()
     {
-        attackRangeVisual.color = new Color(1, 1, 1, 0.1f);
+        attackRangeVisual.color = new Color(1, 1, 1, 0.1f); // attack range is see through
         attackMode = AttackMode.Closest; // default attack mode to "closest"
         targets = new List<GameObject>();
+        hasBeenPlaced = false;
     }
     
     void OnTriggerEnter2D(Collider2D other)
@@ -45,7 +50,7 @@ public class Ally : MonoBehaviour
         if (other.gameObject.tag == "Enemy")
         {
             targets.Add(other.gameObject);
-            // makes sure list of targets always has something
+            // ensures list of targets always has something
             if (targets.Count == 1)
             {
                 currentTarget = other.gameObject;
@@ -62,28 +67,44 @@ public class Ally : MonoBehaviour
     }
 
     private float bulletTimer;
+
     void Update()
     {
-        // target before attacking
-        Target();
-        
-        // attacking
-        // starts timer when there is no enemy in sight
-        if (bulletTimer < attackSpeed)
+        if (!hasBeenPlaced)
         {
-            bulletTimer += Time.deltaTime * GameManager.GameSpeed;
-        }
-        // makes sure there is some target to choose from
-        if (targets.Count != 0)
-        {
-            if (bulletTimer > attackSpeed)
+            Vector3 dragPosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+            dragPosition.z = 0;
+            transform.position = dragPosition; 
+            if (Mouse.current.leftButton.wasPressedThisFrame)
             {
-                shotBullet = Instantiate(bullet, transform.position, Quaternion.identity);
-                shotBullet.GetComponent<Bullet>().Shoot(attackDamage, bulletTravelSpeed, currentTarget, gameObject);
-                bulletTimer = 0f;
+                hasBeenPlaced = true;
+            }
+        }
+        else
+        {
+            // target before attacking
+            Target();
+        
+            // attacking
+            // starts timer when there is no enemy in sight
+            if (bulletTimer < attackSpeed)
+            {
+                bulletTimer += Time.deltaTime * GameManager.GameSpeed;
+            }
+            // makes sure there is some target to choose from
+            if (targets.Count != 0)
+            {
+                if (bulletTimer > attackSpeed)
+                {
+                    shotBullet = Instantiate(bullet, transform.position, Quaternion.identity);
+                    shotBullet.GetComponent<Bullet>().Shoot(attackDamage, bulletTravelSpeed, currentTarget, gameObject);
+                    bulletTimer = 0f;
+                }
             }
         }
     }
+    
+    
 
     public void Target()
     {
