@@ -25,6 +25,11 @@ public class Bullet : MonoBehaviour
         if (moving)
         {
             transform.position = Vector2.MoveTowards(transform.position, targetPastPosition, speed * Time.deltaTime * GameManager.GameSpeed);
+            // deletes the bullet in the event that the enemy is already gone
+            if (Vector2.MoveTowards(transform.position, targetPastPosition, speed * Time.deltaTime * GameManager.GameSpeed) == targetPastPosition)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 

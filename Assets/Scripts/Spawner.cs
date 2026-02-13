@@ -71,12 +71,6 @@ public class Spawner : MonoBehaviour
             enemyList[4].Add(circleDude);
             enemyList[4].Add(circleDude);
             enemyList[4].Add(circleDude);
-            
-            // print(enemyList[0].Count);
-            // print(enemyList[1].Count);
-            // print(enemyList[2].Count);
-            // print(enemyList[3].Count);
-            // print(enemyList[4].Count);
         }
         if (level == 2)
         {
@@ -110,11 +104,9 @@ public class Spawner : MonoBehaviour
         }
         else if (gameManager.gameState != GameManager.GameState.WaitingToStart) // check to see if each enemy in wavelist is dead
         {
-            print(DeadEnemies);
             if (DeadEnemies == enemyList[WaveIndex].Count)
             {
                 DeadEnemies = 0;
-                print("waiting to start");
                 gameManager.gameState = GameManager.GameState.WaitingToStart;
                 BattleUI.WaveButton.style.backgroundImage = new StyleBackground(Background.FromTexture2D(BattleUI.WaveStartSprite));
             }

@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
         fade = battleUI.rootVisualElement.Q<VisualElement>("fade");
         fade.AddToClassList("fade-complete");
         GameSpeed = 1;
+        UpdatePoints(500);
     }
 
     public enum GameState
@@ -91,5 +92,11 @@ public class GameManager : MonoBehaviour
         {
             return null;
         }
+    }
+
+    public static void UpdatePoints(int points)
+    {
+        Points += points;
+        BattleUI.Points.text = "Points: \n" + Points;
     }
 }

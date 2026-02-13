@@ -9,7 +9,7 @@ public class Ally : MonoBehaviour
     public int attackSpeed;
     public int bulletTravelSpeed;
     public int price;
-    public int sellprice;
+    public int sellPrice;
     
     // targeting
     public List<GameObject> targets;
@@ -40,7 +40,7 @@ public class Ally : MonoBehaviour
     void Start()
     {
         attackRangeVisual.color = new Color(1, 1, 1, 0.1f); // attack range is see through
-        attackMode = AttackMode.Closest; // default attack mode to "closest"
+        attackMode = AttackMode.Weakest; // default attack mode to "first"
         targets = new List<GameObject>();
         hasBeenPlaced = false;
     }
@@ -104,8 +104,6 @@ public class Ally : MonoBehaviour
         }
     }
     
-    
-
     public void Target()
     {
         // first, makes sure there is some target to choose from
@@ -126,6 +124,35 @@ public class Ally : MonoBehaviour
             }
             if (attackMode == AttackMode.First)
             {
+                currentTarget = targets[0];
+            }
+            if (attackMode == AttackMode.Last)
+            {
+                currentTarget = targets[targets.Count - 1];
+            }
+            if (attackMode == AttackMode.Strongest)
+            {
+                int targetCurrentHealth = 0;
+                for (int i = 0; i < targets.Count; i++)
+                {
+                    if (targets[i].GetComponent<Enemy>().health > targetCurrentHealth)
+                    {
+                        currentTarget = targets[i];
+                        targetCurrentHealth = targets[i].GetComponent<Enemy>().health;
+                    }
+                }
+            }
+            if (attackMode == AttackMode.Weakest)
+            {
+                int targetCurrentHealth = 999;
+                for (int i = 0; i < targets.Count; i++)
+                {
+                    if (targets[i].GetComponent<Enemy>().health < targetCurrentHealth)
+                    {
+                        currentTarget = targets[i];
+                        targetCurrentHealth = targets[i].GetComponent<Enemy>().health;
+                    }
+                }
             }
         }
     }

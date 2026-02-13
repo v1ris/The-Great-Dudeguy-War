@@ -48,7 +48,6 @@ public class BattleUI : MonoBehaviour
         {
             Spawner.SpawningActive = true;
             Spawner.WaveIndex++;
-            print(Spawner.WaveIndex);
             gameManager.gameState = GameManager.GameState.WaveActive;
             WaveButton.style.backgroundImage = new StyleBackground(Background.FromTexture2D(wavePause));
         }
@@ -67,7 +66,6 @@ public class BattleUI : MonoBehaviour
             GameManager.GameSpeed = 1;
             WaveButton.style.backgroundImage = new StyleBackground(Background.FromTexture2D(wavePause));
         }
-        print(gameManager.gameState);
     }
 
     private void OnFastFowardButtonClicked(ClickEvent evt)
@@ -89,7 +87,11 @@ public class BattleUI : MonoBehaviour
     
     private void OnGuyButtonClicked(ClickEvent evt)
     {
-        GameObject guy = Instantiate(normalGuy, Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()), Quaternion.identity);
+        if (GameManager.Points >= 100)
+        {
+            GameObject guy = Instantiate(normalGuy, Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()), Quaternion.identity);
+            GameManager.UpdatePoints(-100);
+        }
     }
 }
 
