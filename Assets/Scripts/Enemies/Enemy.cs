@@ -1,4 +1,5 @@
 using System;
+using FMODUnity;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -43,5 +44,8 @@ public class Enemy : MonoBehaviour
     {
         Spawner.DeadEnemies++;
         GameManager.UpdatePoints(droppedMoney);
+        
+        // play sound
+        RuntimeManager.PlayOneShot("event:/SFX/dude_hurt");
     }
 }

@@ -11,7 +11,7 @@ public class NormalGuy : MonoBehaviour
         baseScript.price = -100;
         baseScript.sellPrice = 50;
         baseScript.attackDamage = 1;
-        baseScript.attackSpeed = 1f;
+        baseScript.attackSpeed = 1.1f;
         baseScript.bulletTravelSpeed = 4;
     }
 }

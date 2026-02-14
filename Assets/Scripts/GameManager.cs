@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public static int Points;
     
     [SerializeField] private UIDocument battleUI;
+    [SerializeField] private Dialogue dialogue;
     private VisualElement fade;
     private VisualElement screen;
     
@@ -25,7 +26,11 @@ public class GameManager : MonoBehaviour
     
     [SerializeField] private Spawner spawner;
     
+    // level control
     public static int CurrentLevel;
+    private int fadeTimer;
+    public static bool Fading;
+    public static bool LevelEnded;
 
     void Start()
     {
@@ -38,7 +43,11 @@ public class GameManager : MonoBehaviour
         fade = battleUI.rootVisualElement.Q<VisualElement>("fade");
         fade.AddToClassList("fade-complete");
         GameSpeed = 1;
-        UpdatePoints(100);
+        UpdatePoints(200);
+        
+        // ensuring level control bools are correct
+        Fading = false;
+        LevelEnded = false;
     }
 
     public enum GameState
@@ -69,6 +78,39 @@ public class GameManager : MonoBehaviour
             lvl3Background.enabled = true;
             spawner.LoadWaves(level);
         }
+    }
+    
+    public static void EndLevel()
+    {
+        Fading = true;
+        LevelEnded = true;
+    }
+
+    private bool startedVisualFade;
+    void FixedUpdate()
+    {
+        if (Fading)
+        {
+            if (!startedVisualFade)
+            {
+                screen.style.display = DisplayStyle.Flex;
+                fade.RemoveFromClassList("fade-in");
+                startedVisualFade = true;
+            }
+            fadeTimer++;
+            if (fadeTimer == 101)
+            {
+                if (SceneManager.GetActiveScene().name == "Level 1" && LevelEnded)
+                {
+                    SceneManager.LoadScene("Level 2");
+                }
+                if (SceneManager.GetActiveScene().name == "Level 2" && LevelEnded)
+                {
+                    SceneManager.LoadScene("Level 3");
+                }
+            }
+        }
+
     }
 
     public GameObject[] RetrievePathPoints()

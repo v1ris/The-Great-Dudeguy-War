@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using FMODUnity;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -88,6 +89,7 @@ public class Ally : MonoBehaviour
             transform.position = dragPosition; 
             if (Mouse.current.leftButton.wasPressedThisFrame && canBePlaced)
             {
+                RuntimeManager.PlayOneShot("event:/SFX/guy_placed");
                 hasBeenPlaced = true;
             }
         }

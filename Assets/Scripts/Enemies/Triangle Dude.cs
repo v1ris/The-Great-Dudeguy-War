@@ -6,8 +6,8 @@ public class TriangleDude : MonoBehaviour
     void Start()
     {
         enemyClass = gameObject.GetComponent<Enemy>();
-        enemyClass.health = 4;
-        enemyClass.droppedMoney = 20;
+        enemyClass.health = 7;
+        enemyClass.droppedMoney = 40;
         enemyClass.moveSpeed = 1.3f;
     }
 }

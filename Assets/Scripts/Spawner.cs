@@ -30,64 +30,69 @@ public class Spawner : MonoBehaviour
     {
         if (level == 1)
         {
+            // enemyList  = new List<List<GameObject>>();
+            // enemyList.Insert(0, new List<GameObject>());
+            // enemyList.Insert(1, new List<GameObject>());
+            // enemyList.Insert(2, new List<GameObject>());
+            // enemyList.Insert(3, new List<GameObject>());
+            // enemyList.Insert(4, new List<GameObject>());
+            //
+            // // wave 1
+            // enemyList[0].Add(circleDude);
+            // enemyList[0].Add(circleDude);
+            // enemyList[0].Add(circleDude);
+            // enemyList[0].Add(circleDude);
+            // enemyList[0].Add(circleDude);
+            //
+            // // wave 2
+            // enemyList[1].Add(circleDude);
+            // enemyList[1].Add(circleDude);
+            // enemyList[1].Add(circleDude);
+            // enemyList[1].Add(circleDude);
+            // enemyList[1].Add(circleDude);
+            // enemyList[1].Add(circleDude);
+            // enemyList[1].Add(circleDude);
+            // enemyList[1].Add(circleDude);
+            // enemyList[1].Add(circleDude);
+            // enemyList[1].Add(circleDude);
+            //
+            // // wave 3
+            // enemyList[2].Add(triangleDude);
+            // enemyList[2].Add(circleDude);
+            // enemyList[2].Add(triangleDude);
+            // enemyList[2].Add(circleDude);
+            // enemyList[2].Add(triangleDude);
+            // enemyList[2].Add(triangleDude);
+            // enemyList[2].Add(triangleDude);
+            //
+            // // wave 4
+            // enemyList[3].Add(triangleDude);
+            // enemyList[3].Add(triangleDude);
+            // enemyList[3].Add(triangleDude);
+            // enemyList[3].Add(triangleDude);
+            // enemyList[3].Add(triangleDude);
+            // enemyList[3].Add(triangleDude);
+            // enemyList[3].Add(triangleDude);
+            // enemyList[3].Add(triangleDude);
+            // enemyList[3].Add(triangleDude);
+            // enemyList[3].Add(squareDude);
+            //
+            // // wave 5
+            // enemyList[4].Add(triangleDude);
+            // enemyList[4].Add(squareDude);
+            // enemyList[4].Add(triangleDude);
+            // enemyList[4].Add(squareDude);
+            // enemyList[4].Add(triangleDude);
+            // enemyList[4].Add(squareDude);
+            // enemyList[4].Add(triangleDude);
+            // enemyList[4].Add(squareDude);
+            // enemyList[4].Add(squareDude);
+            // enemyList[4].Add(squareDude);
+            
+            // test level
             enemyList  = new List<List<GameObject>>();
             enemyList.Insert(0, new List<GameObject>());
-            enemyList.Insert(1, new List<GameObject>());
-            enemyList.Insert(2, new List<GameObject>());
-            enemyList.Insert(3, new List<GameObject>());
-            enemyList.Insert(4, new List<GameObject>());
-
-            // wave 1
             enemyList[0].Add(circleDude);
-            enemyList[0].Add(circleDude);
-            enemyList[0].Add(circleDude);
-            enemyList[0].Add(circleDude);
-            enemyList[0].Add(circleDude);
-            
-            // wave 2
-            enemyList[1].Add(circleDude);
-            enemyList[1].Add(circleDude);
-            enemyList[1].Add(circleDude);
-            enemyList[1].Add(circleDude);
-            enemyList[1].Add(circleDude);
-            enemyList[1].Add(circleDude);
-            enemyList[1].Add(circleDude);
-            enemyList[1].Add(circleDude);
-            enemyList[1].Add(circleDude);
-            enemyList[1].Add(circleDude);
-            
-            // wave 3
-            enemyList[2].Add(triangleDude);
-            enemyList[2].Add(circleDude);
-            enemyList[2].Add(triangleDude);
-            enemyList[2].Add(circleDude);
-            enemyList[2].Add(triangleDude);
-            enemyList[2].Add(triangleDude);
-            enemyList[2].Add(triangleDude);
-            
-            // wave 4
-            enemyList[3].Add(triangleDude);
-            enemyList[3].Add(triangleDude);
-            enemyList[3].Add(triangleDude);
-            enemyList[3].Add(triangleDude);
-            enemyList[3].Add(triangleDude);
-            enemyList[3].Add(triangleDude);
-            enemyList[3].Add(triangleDude);
-            enemyList[3].Add(triangleDude);
-            enemyList[3].Add(triangleDude);
-            enemyList[3].Add(squareDude);
-            
-            // wave 5
-            enemyList[4].Add(triangleDude);
-            enemyList[4].Add(squareDude);
-            enemyList[4].Add(triangleDude);
-            enemyList[4].Add(squareDude);
-            enemyList[4].Add(triangleDude);
-            enemyList[4].Add(squareDude);
-            enemyList[4].Add(triangleDude);
-            enemyList[4].Add(squareDude);
-            enemyList[4].Add(squareDude);
-            enemyList[4].Add(squareDude);
         }
         if (level == 2)
         {
@@ -126,6 +131,15 @@ public class Spawner : MonoBehaviour
                 DeadEnemies = 0;
                 gameManager.gameState = GameManager.GameState.WaitingToStart;
                 BattleUI.WaveButton.style.backgroundImage = new StyleBackground(Background.FromTexture2D(BattleUI.WaveStartSprite));
+                // check if it's the final wave
+                print(WaveIndex);
+                print(enemyList.Count);
+                print(enemyList.Count - 1);
+                if (WaveIndex == enemyList.Count - 1)
+                {
+                    print("Ending level");
+                    GameManager.EndLevel();
+                }
             }
         }
     }

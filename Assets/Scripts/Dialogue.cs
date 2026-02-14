@@ -5,6 +5,7 @@ using FMOD;
 using FMODUnity;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using UnityEngine.UIElements;
 
@@ -25,7 +26,7 @@ public class Dialogue : MonoBehaviour
     
     // Objects to reference when changing sounds
     private GameObject talkingSFX;
-    private GameObject bgm;
+    private StudioEventEmitter bgm;
     
     // Scrolling Dialogue
     private string speakerName;
@@ -35,6 +36,7 @@ public class Dialogue : MonoBehaviour
     [SerializeField] private int currentLine; // which dialogue switch case is selected
     private bool isScrolling;
     private bool nameEntryActive;
+    public bool FinalLine;
     
     // Scene changing
     private bool fading;
@@ -59,12 +61,20 @@ public class Dialogue : MonoBehaviour
         introBackground.style.display = DisplayStyle.Flex;
         
         // initializing variables for dialogue
-        // currentLine = 0;
-        // currentCharacter = 0;
-        IterateDialogue(0);
+        if (SceneManager.GetActiveScene().name == "Level 1")
+        {
+            currentLine = 0;
+        }
+        if (SceneManager.GetActiveScene().name == "Level 2")
+        {
+            currentLine = 18;
+        }
+        IterateDialogue(currentLine);
         
         // setting up the scene
-        bgm = audioManager.CreateAudioInstance(RuntimeManager.PathToEventReference("event:/Music/wiseguy_theme"));
+        bgm = gameObject.AddComponent<StudioEventEmitter>();
+        bgm.EventReference = RuntimeManager.PathToEventReference("event:/Music/wiseguy_theme");
+        bgm.Play();
         nameEntryBox.style.display = DisplayStyle.None;
     }
     
@@ -80,7 +90,7 @@ public class Dialogue : MonoBehaviour
                 isScrolling = false;
             }
             // normal handling as long as name entry isn't active
-            else if (!nameEntryActive)
+            else if (!nameEntryActive && !FinalLine)
             {
                 currentCharacter = 0;
                 scrollingText = "";
@@ -136,14 +146,14 @@ public class Dialogue : MonoBehaviour
             if (fadeTimer == 101)
             {
                 introBackground.style.display = DisplayStyle.None;
-                audioManager.DestroyAudioInstance(bgm);
+                bgm.Stop();
                 gameManager.StartLevel(GameManager.CurrentLevel);
                 gameObject.SetActive(false);
             }
         }
     }
     
-    private void IterateDialogue(int num)
+    public void IterateDialogue(int num)
     {
         switch (num)
         {
@@ -255,12 +265,20 @@ public class Dialogue : MonoBehaviour
                 fullText = "The time has comef,,,,,,,, GO,,,,,,";
                 break; 
             case 17:
-                bgm.GetComponent<StudioEventEmitter>().SetParameter("Fadeout", 1);
+                FinalLine = true;
+                bgm.SetParameter("Fadeout", 1);
                 fade.style.display = DisplayStyle.Flex;
                 fade.AddToClassList("fade-out");
                 fading = true;
                 GameManager.CurrentLevel = 1;
                 break;
+            case 18:
+                talkingSFX = audioManager.CreateAudioInstance(RuntimeManager.PathToEventReference("event:/SFX/wiseguy_talk"));
+                dialoguePortrait.image = wiseguyPortrait;
+                speakerName = "WISEGUY: ";
+                fullText = "Kong rats on not dyeing!!!!!!!!";
+                break; 
+                
         }
     }
 }

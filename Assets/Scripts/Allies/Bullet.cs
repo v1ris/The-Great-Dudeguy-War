@@ -1,3 +1,4 @@
+using FMODUnity;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -18,6 +19,9 @@ public class Bullet : MonoBehaviour
         targetPastPosition = target.transform.position;
         shooter = passedShooter;
         moving = true;
+        
+        // play sound
+        RuntimeManager.PlayOneShot("event:/SFX/bullet_shoot");
     }
 
     void Update()

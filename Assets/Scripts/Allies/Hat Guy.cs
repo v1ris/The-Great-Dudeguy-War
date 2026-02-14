@@ -11,7 +11,7 @@ public class HatGuy : MonoBehaviour
         baseScript.price = -200;
         baseScript.sellPrice = 100;
         baseScript.attackDamage = 1;
-        baseScript.attackSpeed = .4f;
+        baseScript.attackSpeed = .6f;
         baseScript.bulletTravelSpeed = 4;
     }
 }
