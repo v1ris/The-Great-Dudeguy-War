@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8237752478532684708}
   - component: {fileID: 2866314082154789257}
   m_Layer: 7
-  m_Name: Normal Guy Attack Range
+  m_Name: Hat Guy Attack Range
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 441650809584012514}
@@ -139,11 +139,11 @@ GameObject:
   - component: {fileID: 441650809584012514}
   - component: {fileID: 4080648600323388521}
   - component: {fileID: 3292050564232125440}
-  - component: {fileID: 8988769917772066399}
+  - component: {fileID: 4056013865967677223}
   - component: {fileID: 4301331978533584962}
-  - component: {fileID: 1446163193292357323}
+  - component: {fileID: 7450424944622809763}
   m_Layer: 8
-  m_Name: Normal Guy
+  m_Name: Hat Guy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -214,7 +214,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -796505955043063589, guid: ea6352231fafa43e2bc7b88041b9fbee, type: 3}
+  m_Sprite: {fileID: -779092744848838158, guid: 403d8e2a763d4451a9d067cc71dd157d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -246,7 +246,7 @@ MonoBehaviour:
   attackRange: {fileID: 2866314082154789257}
   attackRangeVisual: {fileID: 8237752478532684708}
   bullet: {fileID: 7694042814437570017, guid: 1e861627f12f0428e8304b93b0b49f38, type: 3}
---- !u!114 &8988769917772066399
+--- !u!114 &4056013865967677223
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -255,9 +255,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5077603898165420404}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81cda4eca631e4c6882b3c756b882eec, type: 3}
+  m_Script: {fileID: 11500000, guid: a6ed2139dacc0472291cb7daacd71bf2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NormalGuy
+  m_EditorClassIdentifier: Assembly-CSharp::HatGuy
 --- !u!50 &4301331978533584962
 Rigidbody2D:
   serializedVersion: 5
@@ -285,7 +285,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
---- !u!61 &1446163193292357323
+--- !u!61 &7450424944622809763
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -315,19 +315,19 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.0017426759, y: -0.16206984}
+  m_Offset: {x: -0.03749302, y: -0.2494728}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.44, y: 0.82}
+    oldSize: {x: 0.5, y: 1.01}
     newSize: {x: 0.44, y: 0.82}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.30407038, y: 0.49586037}
+  m_Size: {x: 0.35002792, y: 0.5110544}
   m_EdgeRadius: 0

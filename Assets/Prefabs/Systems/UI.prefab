@@ -72,6 +72,7 @@ MonoBehaviour:
   wiseguyPortrait: {fileID: 2800000, guid: 6beb9c1324fb5492892e9decd010005c, type: 3}
   audioManager: {fileID: 0}
   gameManager: {fileID: 0}
+  currentLine: 16
   scrollSpeed: 1
 --- !u!1 &4467107687328880994
 GameObject:
@@ -145,6 +146,7 @@ MonoBehaviour:
   wavePause: {fileID: 2800000, guid: 3cfbdf4539d024beb98ca22eb03dbb45, type: 3}
   waveFastForward: {fileID: 2800000, guid: e8f5550bb5c644702b1edd37eb3423e7, type: 3}
   normalGuy: {fileID: 5077603898165420404, guid: 91a358e5046d14ed2b719653c45c7502, type: 3}
+  hatGuy: {fileID: 5077603898165420404, guid: d7489238f7e424ed0beb78f750dd8d1e, type: 3}
 --- !u!1 &4836640090645697591
 GameObject:
   m_ObjectHideFlags: 0

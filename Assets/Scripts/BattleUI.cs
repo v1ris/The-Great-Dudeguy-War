@@ -16,7 +16,9 @@ public class BattleUI : MonoBehaviour
     public static Label Points;
     
     private Button normalGuyButton;
+    private Button hatGuyButton;
     [SerializeField] GameObject normalGuy;
+    [SerializeField] GameObject hatGuy;
     
     private GameManager gameManager;
     private Spawner spawner;
@@ -36,7 +38,10 @@ public class BattleUI : MonoBehaviour
         fastForwardButton.RegisterCallback<ClickEvent>(OnFastFowardButtonClicked);
         
         normalGuyButton = ui.rootVisualElement.Q<Button>("normalGuyButton");
-        normalGuyButton.RegisterCallback<ClickEvent>(OnGuyButtonClicked);
+        normalGuyButton.RegisterCallback<ClickEvent>(OnNormalGuyButtonClicked);
+        
+        hatGuyButton = ui.rootVisualElement.Q<Button>("hatGuyButton");
+        hatGuyButton.RegisterCallback<ClickEvent>(OnHatGuyButtonClicked);
         
         Points = ui.rootVisualElement.Q<Label>("points");
     }
@@ -85,12 +90,20 @@ public class BattleUI : MonoBehaviour
         }
     }
     
-    private void OnGuyButtonClicked(ClickEvent evt)
+    private void OnNormalGuyButtonClicked(ClickEvent evt)
     {
         if (GameManager.Points >= 100)
         {
             GameObject guy = Instantiate(normalGuy, Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()), Quaternion.identity);
             GameManager.UpdatePoints(-100);
+        }
+    }
+    private void OnHatGuyButtonClicked(ClickEvent evt)
+    {
+        if (GameManager.Points >= 200)
+        {
+            GameObject guy = Instantiate(hatGuy, Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()), Quaternion.identity);
+            GameManager.UpdatePoints(-200);
         }
     }
 }

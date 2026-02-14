@@ -6,7 +6,7 @@ public class Ally : MonoBehaviour
 {
     // stats
     public int attackDamage;
-    public int attackSpeed;
+    public float attackSpeed;
     public int bulletTravelSpeed;
     public int price;
     public int sellPrice;
@@ -25,6 +25,7 @@ public class Ally : MonoBehaviour
     
     // placing unit on field
     private bool hasBeenPlaced = false;
+    private bool canBePlaced = false;
 
     public enum AttackMode
     {
@@ -56,6 +57,12 @@ public class Ally : MonoBehaviour
                 currentTarget = other.gameObject;
             }
         }
+        if (other.gameObject.layer == 8) // layer 8 = allies & path
+        {
+            print("cannot be placed");
+            attackRangeVisual.color = new Color(1, 0, 0, 0.1f);
+            canBePlaced = false;
+        }
     }
 
     void OnTriggerExit2D(Collider2D other)
@@ -63,6 +70,12 @@ public class Ally : MonoBehaviour
         if (other.gameObject.tag == "Enemy")
         {
             targets.Remove(other.gameObject);
+        }
+        if (other.gameObject.layer == 8) // layer 8 = allies & path
+        {
+            print("can be placed");
+            attackRangeVisual.color = new Color(1, 1, 1, 0.1f);
+            canBePlaced = true;
         }
     }
 
@@ -75,7 +88,7 @@ public class Ally : MonoBehaviour
             Vector3 dragPosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
             dragPosition.z = 0;
             transform.position = dragPosition; 
-            if (Mouse.current.leftButton.wasPressedThisFrame)
+            if (Mouse.current.leftButton.wasPressedThisFrame && canBePlaced)
             {
                 hasBeenPlaced = true;
             }
@@ -103,6 +116,8 @@ public class Ally : MonoBehaviour
             }
         }
     }
+    
+    
     
     public void Target()
     {

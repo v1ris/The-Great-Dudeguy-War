@@ -4,7 +4,6 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - Level 1 Pathpoint
   - Enemy
   layers:
   - Default
@@ -14,8 +13,8 @@ TagManager:
   - Water
   - UI
   - 
-  - Enemies & Bullets
-  - Allies & Attack Rangers
+  - Enemies, Bullets, and Attack Ranges
+  - Allies & Path
   - 
   - 
   - 

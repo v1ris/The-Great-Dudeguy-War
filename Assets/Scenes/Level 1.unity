@@ -176,7 +176,8 @@ GameObject:
   m_Component:
   - component: {fileID: 297603333}
   - component: {fileID: 297603334}
-  m_Layer: 0
+  - component: {fileID: 297603335}
+  m_Layer: 8
   m_Name: EnemyPath
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -253,6 +254,33 @@ PolygonCollider2D:
       - {x: 4.5440145, y: 5.8660855}
       - {x: 3.440662, y: 5.8404446}
   m_UseDelaunayMesh: 1
+--- !u!50 &297603335
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 297603332}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &394354472
 GameObject:
   m_ObjectHideFlags: 0
@@ -1129,10 +1157,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3611563242411828952, guid: 414e41df963ed417aa79b90ac3b3b030, type: 3}
-      propertyPath: currentLine
-      value: 16
-      objectReference: {fileID: 0}
     - target: {fileID: 3611563242411828952, guid: 414e41df963ed417aa79b90ac3b3b030, type: 3}
       propertyPath: gameManager
       value: 
