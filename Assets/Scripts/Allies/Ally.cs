@@ -59,7 +59,6 @@ public class Ally : MonoBehaviour
         }
         if (other.gameObject.layer == 8) // layer 8 = allies & path
         {
-            print("cannot be placed");
             attackRangeVisual.color = new Color(1, 0, 0, 0.1f);
             canBePlaced = false;
         }
@@ -73,7 +72,6 @@ public class Ally : MonoBehaviour
         }
         if (other.gameObject.layer == 8) // layer 8 = allies & path
         {
-            print("can be placed");
             attackRangeVisual.color = new Color(1, 1, 1, 0.1f);
             canBePlaced = true;
         }

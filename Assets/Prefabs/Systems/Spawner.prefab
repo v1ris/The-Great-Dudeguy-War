@@ -45,6 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Spawner
   circleDude: {fileID: 8958821937230525550, guid: 5c595460f3b2e45e38347e795f5b0ca4, type: 3}
-  circleDude2: {fileID: 376564695186484702, guid: fa89284e22f1f446693a3f1bccb2ee06, type: 3}
-  triangleDude: {fileID: 0}
-  squareDude: {fileID: 0}
+  triangleDude: {fileID: 8958821937230525550, guid: d403193ede8f5489889dda08b580dcf9, type: 3}
+  squareDude: {fileID: 8958821937230525550, guid: f48fd2daa24f04696b7b702686866def, type: 3}
+  gameManager: {fileID: 0}

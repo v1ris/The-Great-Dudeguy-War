@@ -15,7 +15,6 @@ public class Spawner : MonoBehaviour
     public static int DeadEnemies;
 
     [SerializeField] private GameObject circleDude;
-    [SerializeField] private GameObject circleDude2;
     [SerializeField] private GameObject triangleDude;
     [SerializeField] private GameObject squareDude;
     [SerializeField] private GameManager gameManager;
@@ -58,19 +57,37 @@ public class Spawner : MonoBehaviour
             enemyList[1].Add(circleDude);
             
             // wave 3
+            enemyList[2].Add(triangleDude);
             enemyList[2].Add(circleDude);
+            enemyList[2].Add(triangleDude);
             enemyList[2].Add(circleDude);
-            enemyList[2].Add(circleDude);
+            enemyList[2].Add(triangleDude);
+            enemyList[2].Add(triangleDude);
+            enemyList[2].Add(triangleDude);
             
             // wave 4
-            enemyList[3].Add(circleDude);
-            enemyList[3].Add(circleDude);
-            enemyList[3].Add(circleDude);
+            enemyList[3].Add(triangleDude);
+            enemyList[3].Add(triangleDude);
+            enemyList[3].Add(triangleDude);
+            enemyList[3].Add(triangleDude);
+            enemyList[3].Add(triangleDude);
+            enemyList[3].Add(triangleDude);
+            enemyList[3].Add(triangleDude);
+            enemyList[3].Add(triangleDude);
+            enemyList[3].Add(triangleDude);
+            enemyList[3].Add(squareDude);
             
             // wave 5
-            enemyList[4].Add(circleDude);
-            enemyList[4].Add(circleDude);
-            enemyList[4].Add(circleDude);
+            enemyList[4].Add(triangleDude);
+            enemyList[4].Add(squareDude);
+            enemyList[4].Add(triangleDude);
+            enemyList[4].Add(squareDude);
+            enemyList[4].Add(triangleDude);
+            enemyList[4].Add(squareDude);
+            enemyList[4].Add(triangleDude);
+            enemyList[4].Add(squareDude);
+            enemyList[4].Add(squareDude);
+            enemyList[4].Add(squareDude);
         }
         if (level == 2)
         {
