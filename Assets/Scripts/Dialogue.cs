@@ -24,9 +24,10 @@ public class Dialogue : MonoBehaviour
     private VisualElement fade;
     private VisualElement introBackground;
     
-    // Objects to reference when changing sounds
+    // Objects to reference when creating sounds
     private GameObject talkingSFX;
     private StudioEventEmitter bgm;
+    private StudioEventEmitter realization;
     
     // Scrolling Dialogue
     private string speakerName;
@@ -43,7 +44,8 @@ public class Dialogue : MonoBehaviour
     
     // Scroll Speed
     private int fixedUpdateTimer = 0;
-    public int scrollSpeed = 2; // higher number means slower. i might try to fix this later but idk how
+    public float scrollSpeed = 2f; // higher number means slower. i might try to fix this later but idk how
+    private bool skippable = true;
     
     void Start()
     {
@@ -71,16 +73,21 @@ public class Dialogue : MonoBehaviour
         }
         IterateDialogue(currentLine);
         
-        // setting up the scene
+        // setting up the scene's audio
         bgm = gameObject.AddComponent<StudioEventEmitter>();
         bgm.EventReference = RuntimeManager.PathToEventReference("event:/Music/wiseguy_theme");
         bgm.Play();
+        
+        realization = gameObject.AddComponent<StudioEventEmitter>();
+        realization.EventReference = RuntimeManager.PathToEventReference("event:/Music/realization");
+        
         nameEntryBox.style.display = DisplayStyle.None;
     }
+
     
     void Update()
     {
-        if (Mouse.current.leftButton.wasReleasedThisFrame)
+        if (Mouse.current.leftButton.wasReleasedThisFrame && skippable)
         {
             // skipping dialogue
             if (isScrolling)
@@ -126,15 +133,18 @@ public class Dialogue : MonoBehaviour
         {
             audioManager.DestroyAudioInstance(talkingSFX);
             isScrolling = false;
+            skippable = true;
+            print(isScrolling);
+            print(skippable);
         }
-        if ((scrollingText != fullText) && (fixedUpdateTimer == scrollSpeed))
+        if ((scrollingText != fullText) && (fixedUpdateTimer > scrollSpeed))
         {
             isScrolling = true;
             scrollingText += fullText[currentCharacter];
             dialogueText.text = speakerName + scrollingText;
             currentCharacter++;
         }
-        if (fixedUpdateTimer == scrollSpeed)
+        if (fixedUpdateTimer > scrollSpeed)
         {
             fixedUpdateTimer = 0;
         }
@@ -276,8 +286,65 @@ public class Dialogue : MonoBehaviour
                 talkingSFX = audioManager.CreateAudioInstance(RuntimeManager.PathToEventReference("event:/SFX/wiseguy_talk"));
                 dialoguePortrait.image = wiseguyPortrait;
                 speakerName = "WISEGUY: ";
-                fullText = "Kong rats on not dyeing!!!!!!!!";
+                fullText = "Kong rats on not dyeing!!!!!!!! Bye the bye,,, have you noticed the SECRRET!?!?";
                 break; 
+            case 19:
+                talkingSFX = audioManager.CreateAudioInstance(RuntimeManager.PathToEventReference("event:/SFX/wiseguy_talk"));
+                dialoguePortrait.image = wiseguyPortrait;
+                speakerName = "WISEGUY: ";
+                fullText = "Thats right. If you click on an enemy. It shows you we’re they’re from and there name!!! there people, just liek you or me. Because in THE GREAT DUDEGUY WAR - your the player. and your choice is. and you’re actions have consequences. so you better not FUC UP";
+                break; 
+            case 20:
+                talkingSFX = audioManager.CreateAudioInstance(RuntimeManager.PathToEventReference("event:/SFX/fuckass_talk"));
+                dialoguePortrait.image = fuckassPortrait;
+                speakerName = "FUCKASS: ";
+                fullText = "ok well thats really stupid its not like youre giving me a choice here i have to kill these polygons to win and you give me money for doing it";
+                break; 
+            case 21:
+                bgm.Stop();
+                RuntimeManager.PlayOneShot(RuntimeManager.PathToEventReference("event:/SFX/record_scratch"));
+                textBox.style.display = DisplayStyle.None;
+                fullText = "";
+                dialogueText.text = "";
+                break;
+            case 22:
+                realization.Play();
+                textBox.style.display = DisplayStyle.Flex;
+                talkingSFX = audioManager.CreateAudioInstance(RuntimeManager.PathToEventReference("event:/SFX/wiseguy_talk"));
+                skippable = false;
+                dialoguePortrait.image = wiseguyPortrait;
+                scrollSpeed = 2.5f;
+                speakerName = "WISEGUY: ";
+                fullText = "Have you ever considered that the role of the “player” in the medium of Video Games, and furthermore the forceful inhabitation and control of an individual or collective within a given game universe, is inherently violent and oppressive?";
+                break; 
+            case 23:
+                skippable = false;
+                talkingSFX = audioManager.CreateAudioInstance(RuntimeManager.PathToEventReference("event:/SFX/wiseguy_talk"));
+                dialoguePortrait.image = wiseguyPortrait;
+                speakerName = "WISEGUY: ";
+                fullText = "These people you see before you, or “Dudes” as they are denominated in-canon, could be prisoners of war, hostages, any number of things that would eliminate their agency and render their alleged villainy void — and yet you disregard any such possibilities, stripping them of their humanity.";
+                break;
+            case 24:
+                skippable = false;
+                talkingSFX = audioManager.CreateAudioInstance(RuntimeManager.PathToEventReference("event:/SFX/wiseguy_talk"));
+                dialoguePortrait.image = wiseguyPortrait;
+                speakerName = "WISEGUY: ";
+                fullText = "Just meat into the grinder, pixels without feelings, point fodder to buy more “Guys.” Not to mention, here you are forcing said “Guys” to carry out your every whim, similarly without care toward how they may object to this senseless violence either.";
+                break;
+            case 25:
+                realization.Stop(); 
+                talkingSFX = audioManager.CreateAudioInstance(RuntimeManager.PathToEventReference("event:/SFX/fuckass_talk"));
+                scrollSpeed = 1f;
+                dialoguePortrait.image = fuckassPortrait;
+                speakerName = "FUCKASS: ";
+                fullText = "yeah i rly dgaf";
+                break;
+            case 26:
+                talkingSFX = audioManager.CreateAudioInstance(RuntimeManager.PathToEventReference("event:/SFX/wiseguy_talk"));
+                dialoguePortrait.image = wiseguyPortrait;
+                speakerName = "WISEGUY: ";
+                fullText = "FUCK YOU!!!!!!!!!!!!!!!!!!!!!!!!!!";
+                break;
                 
         }
     }

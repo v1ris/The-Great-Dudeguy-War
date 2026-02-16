@@ -1181,6 +1181,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1997402924}
     - target: {fileID: 3611563242411828952, guid: 414e41df963ed417aa79b90ac3b3b030, type: 3}
+      propertyPath: scrollSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3611563242411828952, guid: 414e41df963ed417aa79b90ac3b3b030, type: 3}
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 1110267830}

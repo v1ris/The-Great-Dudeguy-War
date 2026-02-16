@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{14321448-491b-4dd7-b50e-9876614f9fcc}">
+		<property name="assetPath">
+			<value>FF_CF_foley_record_scratch_red.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.82208616780045352</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{fa70df86-51a8-4bf0-96f8-dc759891cc57}</destination>
+		</relationship>
+	</object>
+</objects>
