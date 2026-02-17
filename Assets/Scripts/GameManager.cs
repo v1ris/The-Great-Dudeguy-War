@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject pathpoint3;
     [SerializeField] private GameObject pathpoint4;
     [SerializeField] private GameObject pathpoint5;
+    [SerializeField] private GameObject pathpoint6;
     
     [SerializeField] private Spawner spawner;
     
@@ -122,7 +123,7 @@ public class GameManager : MonoBehaviour
         }
         else if (SceneManager.GetActiveScene().name == "Level 2")
         {
-            GameObject[] pathPoints = { pathpoint1, pathpoint2, pathpoint3 };
+            GameObject[] pathPoints = { pathpoint1, pathpoint2, pathpoint3, pathpoint4, pathpoint5, pathpoint6 };
             return pathPoints;
         }
         else if (SceneManager.GetActiveScene().name == "Level 3")
