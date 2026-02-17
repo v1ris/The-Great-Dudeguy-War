@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
 {
     // stats
     public int health;
+    public int maxHealth;
     public float moveSpeed;
     public int droppedMoney;
     
@@ -15,11 +16,22 @@ public class Enemy : MonoBehaviour
     private GameManager gameManager;
     private PolygonCollider2D hitbox;
     
+    // healthbar
+    [SerializeField] private GameObject healthBarReference;
+    private GameObject healthBar;
+    public GameObject greenHealthBar;
+    
     void Start()
     {
         pathPointIndex = 0;
         gameManager = FindFirstObjectByType<GameManager>();
         hitbox = gameObject.GetComponent<PolygonCollider2D>();
+        
+        // create healthbar above enemy, store maxHealth value
+        var healthBarPosition = new Vector2(transform.position.x, transform.position.y + .5f);
+        healthBar = Instantiate(healthBarReference, healthBarPosition, Quaternion.identity);
+        healthBar.transform.parent = gameObject.transform;
+        greenHealthBar = healthBar.transform.GetChild(1).gameObject;
     }
     
     void Update()
@@ -39,6 +51,7 @@ public class Enemy : MonoBehaviour
             }
         }
     }
+    
 
     void OnDestroy()
     {

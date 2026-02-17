@@ -132,12 +132,8 @@ public class Spawner : MonoBehaviour
                 gameManager.gameState = GameManager.GameState.WaitingToStart;
                 BattleUI.WaveButton.style.backgroundImage = new StyleBackground(Background.FromTexture2D(BattleUI.WaveStartSprite));
                 // check if it's the final wave
-                print(WaveIndex);
-                print(enemyList.Count);
-                print(enemyList.Count - 1);
                 if (WaveIndex == enemyList.Count - 1)
                 {
-                    print("Ending level");
                     GameManager.EndLevel();
                 }
             }

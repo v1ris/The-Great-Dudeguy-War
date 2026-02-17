@@ -110,6 +110,7 @@ MonoBehaviour:
   health: 0
   moveSpeed: 0
   droppedMoney: 0
+  healthBarReference: {fileID: 5842585253495504878, guid: 45e8e9c8aab8a4f7db85c00dbd2c0e6a, type: 3}
 --- !u!114 &5892589873121869948
 MonoBehaviour:
   m_ObjectHideFlags: 0

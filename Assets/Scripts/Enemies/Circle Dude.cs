@@ -6,7 +6,7 @@ public class CircleDude : MonoBehaviour
     void Start()
     {
         enemyClass = gameObject.GetComponent<Enemy>();
-        enemyClass.health = 3;
+        enemyClass.health = enemyClass.maxHealth = 3;
         enemyClass.droppedMoney = 20;
         enemyClass.moveSpeed = 1f;
     }

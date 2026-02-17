@@ -11,6 +11,8 @@ using UnityEngine.UIElements;
 
 public class Dialogue : MonoBehaviour
 {
+    public bool debugging;
+    
     [SerializeField] private Texture fuckassPortrait;
     [SerializeField] private Texture wiseguyPortrait;
     [SerializeField] private AudioManager audioManager;
@@ -63,16 +65,20 @@ public class Dialogue : MonoBehaviour
         introBackground.style.display = DisplayStyle.Flex;
         
         // initializing variables for dialogue
-        if (SceneManager.GetActiveScene().name == "Level 1")
+        if (!debugging)
         {
-            currentLine = 0;
-        }
-        if (SceneManager.GetActiveScene().name == "Level 2")
-        {
-            currentLine = 18;
+            if (SceneManager.GetActiveScene().name == "Level 1")
+            {
+                currentLine = 0;
+            }
+
+            if (SceneManager.GetActiveScene().name == "Level 2")
+            {
+                currentLine = 18;
+            }
         }
         IterateDialogue(currentLine);
-        
+
         // setting up the scene's audio
         bgm = gameObject.AddComponent<StudioEventEmitter>();
         bgm.EventReference = RuntimeManager.PathToEventReference("event:/Music/wiseguy_theme");
@@ -134,8 +140,6 @@ public class Dialogue : MonoBehaviour
             audioManager.DestroyAudioInstance(talkingSFX);
             isScrolling = false;
             skippable = true;
-            print(isScrolling);
-            print(skippable);
         }
         if ((scrollingText != fullText) && (fixedUpdateTimer > scrollSpeed))
         {
@@ -345,7 +349,14 @@ public class Dialogue : MonoBehaviour
                 speakerName = "WISEGUY: ";
                 fullText = "FUCK YOU!!!!!!!!!!!!!!!!!!!!!!!!!!";
                 break;
-                
+            case 27:
+                FinalLine = true;
+                fade.style.display = DisplayStyle.Flex;
+                bgm.SetParameter("Fadeout", 1);
+                fade.AddToClassList("fade-out");
+                fading = true;
+                GameManager.CurrentLevel = 1;
+                break;
         }
     }
 }

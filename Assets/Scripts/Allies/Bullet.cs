@@ -42,11 +42,12 @@ public class Bullet : MonoBehaviour
         if (other.gameObject.tag == "Enemy")
         {
             // damage and killing
-            other.gameObject.GetComponent<Enemy>().health -= damage;
-            if (other.gameObject.GetComponent<Enemy>().health == 0)
+            var enemyClass = other.gameObject.GetComponent<Enemy>();
+            enemyClass.health -= damage;
+            if (enemyClass.health == 0)
             {
                 // mark enemy as dead and untargetable
-                Ally allyClass = shooter.GetComponent<Ally>();
+                var allyClass = shooter.GetComponent<Ally>();
                 allyClass.targets.Remove(other.gameObject);
                 // makes sure current target is not null
                 if (allyClass.targets.Count != 0)
@@ -56,6 +57,8 @@ public class Bullet : MonoBehaviour
                 }
                 Destroy(other.gameObject);
             }
+            // update health bar
+            enemyClass.greenHealthBar.transform.localScale = new Vector3((float)enemyClass.health / enemyClass.maxHealth, .2f, 1);
             Destroy(gameObject);
         }
     }

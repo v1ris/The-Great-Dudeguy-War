@@ -6,7 +6,7 @@ public class SquareDude : MonoBehaviour
     void Start()
     {
         enemyClass = gameObject.GetComponent<Enemy>();
-        enemyClass.health = 40;
+        enemyClass.health = enemyClass.maxHealth = 40;
         enemyClass.droppedMoney = 75;
         enemyClass.moveSpeed = .7f;
     }
