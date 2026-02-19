@@ -49,6 +49,10 @@ public class Dialogue : MonoBehaviour
     public float scrollSpeed = 2f; // higher number means slower. i might try to fix this later but idk how
     private bool skippable = true;
     
+    // End Game
+    private bool endGame;
+    private int endGameTimer;
+    
     void Start()
     {
         // getting all the UI stuff
@@ -76,6 +80,11 @@ public class Dialogue : MonoBehaviour
             {
                 currentLine = 18;
             }
+
+            if (SceneManager.GetActiveScene().name == "Level 3")
+            {
+                currentLine = 28;
+            }
         }
         IterateDialogue(currentLine);
 
@@ -101,6 +110,11 @@ public class Dialogue : MonoBehaviour
                 dialogueText.text = speakerName + fullText;
                 scrollingText = fullText;
                 isScrolling = false;
+                // Quits game if its the final line
+                if (endGame)
+                {
+                    Application.Quit();
+                }
             }
             // normal handling as long as name entry isn't active
             else if (!nameEntryActive && !FinalLine)
@@ -163,6 +177,16 @@ public class Dialogue : MonoBehaviour
                 bgm.Stop();
                 gameManager.StartLevel(GameManager.CurrentLevel);
                 gameObject.SetActive(false);
+            }
+        }
+        
+        // ends game
+        if (endGame)
+        {
+            endGameTimer++;
+            if (endGameTimer > 100)
+            {
+                Application.Quit();
             }
         }
     }
@@ -356,6 +380,79 @@ public class Dialogue : MonoBehaviour
                 fade.AddToClassList("fade-out");
                 fading = true;
                 GameManager.CurrentLevel = 1;
+                break;
+            case 28:
+                talkingSFX = audioManager.CreateAudioInstance(RuntimeManager.PathToEventReference("event:/SFX/wiseguy_talk"));
+                dialoguePortrait.image = wiseguyPortrait;
+                speakerName = "WISEGUY: ";
+                fullText = "Fine lee,,,,, were at the end of the jure knee,,,,,,,";
+                break;
+            case 29:
+                talkingSFX = audioManager.CreateAudioInstance(RuntimeManager.PathToEventReference("event:/SFX/fuckass_talk"));
+                dialoguePortrait.image = fuckassPortrait;
+                speakerName = "FUCKASS: ";
+                fullText = "wow thats it? that literally took all of 5 minutes. if that even";
+                break;
+            case 30:
+                talkingSFX = audioManager.CreateAudioInstance(RuntimeManager.PathToEventReference("event:/SFX/wiseguy_talk"));
+                dialoguePortrait.image = wiseguyPortrait;
+                speakerName = "WISEGUY: ";
+                fullText = "Did you ever realeyes,,,,,,, in the game title “Dudeguy” is won word?????? thats because, you and i, dudes and guys — we’re won in the same.";
+                break;
+            case 31:
+                talkingSFX = audioManager.CreateAudioInstance(RuntimeManager.PathToEventReference("event:/SFX/fuckass_talk"));
+                dialoguePortrait.image = fuckassPortrait;
+                speakerName = "FUCKASS: ";
+                fullText = "wow";
+                break;
+            case 32:
+                talkingSFX = audioManager.CreateAudioInstance(RuntimeManager.PathToEventReference("event:/SFX/fuckass_talk"));
+                dialoguePortrait.image = fuckassPortrait;
+                speakerName = "FUCKASS: ";
+                fullText = " ";
+                break;
+            case 33:
+                talkingSFX = audioManager.CreateAudioInstance(RuntimeManager.PathToEventReference("event:/SFX/fuckass_talk"));
+                dialoguePortrait.image = fuckassPortrait;
+                speakerName = "FUCKASS: ";
+                fullText = "can i go now";
+                break;
+            case 34:
+                talkingSFX = audioManager.CreateAudioInstance(RuntimeManager.PathToEventReference("event:/SFX/wiseguy_talk"));
+                dialoguePortrait.image = wiseguyPortrait;
+                speakerName = "WISEGUY: ";
+                fullText = "NO!! YOU HAVENT HEARD ALL THE LORE ABOUT OUR WORLD YET!!!!!!!!!";
+                break;
+            case 35:
+                talkingSFX = audioManager.CreateAudioInstance(RuntimeManager.PathToEventReference("event:/SFX/fuckass_talk"));
+                dialoguePortrait.image = fuckassPortrait;
+                speakerName = "FUCKASS: ";
+                fullText = "god how do i turn this thing off";
+                break;
+            case 36:
+                talkingSFX = audioManager.CreateAudioInstance(RuntimeManager.PathToEventReference("event:/SFX/fuckass_talk"));
+                dialoguePortrait.image = fuckassPortrait;
+                speakerName = "FUCKASS: ";
+                fullText = "oh wait";
+                break;
+            case 37:
+                talkingSFX = audioManager.CreateAudioInstance(RuntimeManager.PathToEventReference("event:/SFX/fuckass_talk"));
+                dialoguePortrait.image = fuckassPortrait;
+                speakerName = "FUCKASS: ";
+                fullText = "yeap found it";
+                break;
+            case 38:
+                talkingSFX = audioManager.CreateAudioInstance(RuntimeManager.PathToEventReference("event:/SFX/fuckass_talk"));
+                dialoguePortrait.image = fuckassPortrait;
+                speakerName = "FUCKASS: ";
+                fullText = "bye";
+                break;
+            case 39:
+                endGame = true;
+                talkingSFX = audioManager.CreateAudioInstance(RuntimeManager.PathToEventReference("event:/SFX/wiseguy_talk"));
+                dialoguePortrait.image = wiseguyPortrait;
+                speakerName = "WISEGUY: ";
+                fullText = "NOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO";
                 break;
         }
     }
