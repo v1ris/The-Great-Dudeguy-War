@@ -8,16 +8,16 @@ public class Bullet : MonoBehaviour
     private bool moving;
     private Rigidbody2D rb;
     private GameObject target;
-    private Vector2 targetPastPosition;
     private GameObject shooter;
+    private Vector3 movementVector;
     
     public void Shoot(int passedDamage, int passedSpeed, GameObject passedTarget, GameObject passedShooter)
     {
         damage = passedDamage;
         speed = passedSpeed;
         target = passedTarget;
-        targetPastPosition = target.transform.position;
         shooter = passedShooter;
+        movementVector = (target.transform.position - transform.position);
         moving = true;
         
         // play sound
@@ -28,12 +28,7 @@ public class Bullet : MonoBehaviour
     {
         if (moving)
         {
-            transform.position = Vector2.MoveTowards(transform.position, targetPastPosition, speed * Time.deltaTime * GameManager.GameSpeed);
-            // deletes the bullet in the event that the enemy is already gone
-            if (Vector2.MoveTowards(transform.position, targetPastPosition, speed * Time.deltaTime * GameManager.GameSpeed) == targetPastPosition)
-            {
-                Destroy(gameObject);
-            }
+            transform.position += movementVector * speed * Time.deltaTime * GameManager.GameSpeed;
         }
     }
 
@@ -58,7 +53,7 @@ public class Bullet : MonoBehaviour
                 Destroy(other.gameObject);
             }
             // update health bar
-            enemyClass.greenHealthBar.transform.localScale = new Vector3((float)enemyClass.health / enemyClass.maxHealth, .2f, 1);
+            enemyClass.greenHealthBar.transform.localScale = new Vector3((float)enemyClass.health / enemyClass.maxHealth, .2f, 1); // .2f is to make the square sprite into a long rectangle
             Destroy(gameObject);
         }
     }

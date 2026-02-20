@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class NormalGuy : MonoBehaviour
+public class CoolGuy : MonoBehaviour
 {
     private Ally baseScript;
 
@@ -8,10 +8,10 @@ public class NormalGuy : MonoBehaviour
     void Awake()
     {
         baseScript = gameObject.GetComponent<Ally>();
-        baseScript.price = -100;
-        baseScript.sellPrice = 50;
-        baseScript.attackDamage = 1;
-        baseScript.attackSpeed = 1.1f;
-        baseScript.bulletTravelSpeed = 3;
+        baseScript.price = -400;
+        baseScript.sellPrice = 200;
+        baseScript.attackDamage = 2;
+        baseScript.attackSpeed = .3f;
+        baseScript.bulletTravelSpeed = 5;
     }
 }

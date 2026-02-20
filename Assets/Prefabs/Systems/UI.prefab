@@ -68,11 +68,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66f146752d5874776aebc489b049b7c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Dialogue
+  debugging: 0
   fuckassPortrait: {fileID: 2800000, guid: 8da04520025e94d3b9855a935d81b11c, type: 3}
   wiseguyPortrait: {fileID: 2800000, guid: 6beb9c1324fb5492892e9decd010005c, type: 3}
   audioManager: {fileID: 0}
   gameManager: {fileID: 0}
   currentLine: 16
+  FinalLine: 0
   scrollSpeed: 1
 --- !u!1 &4467107687328880994
 GameObject:
@@ -147,6 +149,7 @@ MonoBehaviour:
   waveFastForward: {fileID: 2800000, guid: e8f5550bb5c644702b1edd37eb3423e7, type: 3}
   normalGuy: {fileID: 5077603898165420404, guid: 91a358e5046d14ed2b719653c45c7502, type: 3}
   hatGuy: {fileID: 5077603898165420404, guid: d7489238f7e424ed0beb78f750dd8d1e, type: 3}
+  coolGuy: {fileID: 5077603898165420404, guid: 6c4b7ba8afe6442e0b186cc3b2746df9, type: 3}
 --- !u!1 &4836640090645697591
 GameObject:
   m_ObjectHideFlags: 0
