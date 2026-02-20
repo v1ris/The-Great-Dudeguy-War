@@ -39,7 +39,7 @@ public class Bullet : MonoBehaviour
             // damage and killing
             var enemyClass = other.gameObject.GetComponent<Enemy>();
             enemyClass.health -= damage;
-            if (enemyClass.health == 0)
+            if (enemyClass.health <= 0)
             {
                 // mark enemy as dead and untargetable
                 var allyClass = shooter.GetComponent<Ally>();
