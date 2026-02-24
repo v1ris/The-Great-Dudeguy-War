@@ -67,6 +67,7 @@ public class Dialogue : MonoBehaviour
         fade.style.display = DisplayStyle.None;
         introBackground = ui.rootVisualElement.Q<VisualElement>("introbackground");
         introBackground.style.display = DisplayStyle.Flex;
+        nameEntryBox.style.display = DisplayStyle.None;
         
         // initializing variables for dialogue
         if (!debugging)
@@ -96,7 +97,14 @@ public class Dialogue : MonoBehaviour
         realization = gameObject.AddComponent<StudioEventEmitter>();
         realization.EventReference = RuntimeManager.PathToEventReference("event:/Music/realization");
         
-        nameEntryBox.style.display = DisplayStyle.None;
+        // dialogue does not appear upon level restart
+        if (GameManager.LevelRestarted)
+        {
+            GameManager.LevelRestarted = false;
+            Spawner.Reset();
+            gameManager.StartLevel(GameManager.CurrentLevel);
+            gameObject.SetActive(false);
+        }
     }
 
     

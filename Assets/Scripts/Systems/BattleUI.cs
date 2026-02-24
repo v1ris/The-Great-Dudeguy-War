@@ -14,6 +14,7 @@ public class BattleUI : MonoBehaviour
     public static Button WaveButton;
     private Button fastForwardButton;
     public static Label Points;
+    public static Label Lives;
     
     private Button normalGuyButton;
     private Button hatGuyButton;
@@ -49,6 +50,7 @@ public class BattleUI : MonoBehaviour
         coolGuyButton.RegisterCallback<ClickEvent>(OnCoolGuyButtonClicked);
         
         Points = ui.rootVisualElement.Q<Label>("points");
+        Lives = ui.rootVisualElement.Q<Label>("lives");
     }
 
     private void OnWaveButtonClicked(ClickEvent evt)

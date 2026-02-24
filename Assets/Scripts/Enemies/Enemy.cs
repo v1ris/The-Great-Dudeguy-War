@@ -47,6 +47,7 @@ public class Enemy : MonoBehaviour
             pathPointIndex++;
             if (pathPointIndex >= gameManager.RetrievePathPoints().Length)
             {
+                GameManager.UpdateLives(health);
                 Destroy(gameObject);
             }
         }
