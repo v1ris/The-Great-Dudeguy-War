@@ -60,9 +60,7 @@ public class GameManager : MonoBehaviour
         Fading = false;
         LevelEnded = false;
         LevelRestarted = false;
-        CurrentLevel =
-            int.Parse(SceneManager.GetActiveScene().name[6]
-                .ToString()); // gets number in scene name to determine level; just in case for testing
+        CurrentLevel = int.Parse(SceneManager.GetActiveScene().name[6].ToString()); // gets number in scene name to determine level; just in case for testing
     }
 
     public enum GameState
@@ -127,49 +125,39 @@ public class GameManager : MonoBehaviour
             {
                 if (SceneManager.GetActiveScene().name == "Level 1" && LevelEnded)
                 {
-                    LevelEnded = false;
-                    Fading = false;
                     SceneManager.LoadScene("Level 2");
                 }
 
                 if (SceneManager.GetActiveScene().name == "Level 2" && LevelEnded)
                 {
-                    LevelEnded = false;
-                    Fading = false;
                     SceneManager.LoadScene("Level 3");
                 }
-
                 if (LevelRestarted)
                 {
-                    Fading = false;
-                    Spawner.Reset();
-                    SetPoints(400);
-                    SetLives(50);
-                    RemoveAlliesAndEnemies();
-                    fade.AddToClassList("fade-in");
+                    SceneManager.LoadScene("Level 1");
                 }
             }
         }
     }
 
-    private static GameObject[] enemiesToDelete;
-    private static GameObject[] alliesToDelete;
-
-    public static void RemoveAlliesAndEnemies()
-    {
-        enemiesToDelete = GameObject.FindGameObjectsWithTag("Enemy");
-        alliesToDelete = GameObject.FindGameObjectsWithTag("Ally");
-        for (int i = 0; i < enemiesToDelete.Length; i++)
-        {
-            Destroy(enemiesToDelete[i]);
-        }
-        for (int i = 0; i < alliesToDelete.Length; i++)
-        {
-            Destroy(alliesToDelete[i]);
-        }
-        Array.Clear(enemiesToDelete, 0, enemiesToDelete.Length);
-        Array.Clear(alliesToDelete, 0, alliesToDelete.Length);
-    }
+    // private static GameObject[] enemiesToDelete;
+    // private static GameObject[] alliesToDelete;
+    //
+    // public static void RemoveAlliesAndEnemies()
+    // {
+    //     enemiesToDelete = GameObject.FindGameObjectsWithTag("Enemy");
+    //     alliesToDelete = GameObject.FindGameObjectsWithTag("Ally");
+    //     for (int i = 0; i < enemiesToDelete.Length; i++)
+    //     {
+    //         Destroy(enemiesToDelete[i]);
+    //     }
+    //     for (int i = 0; i < alliesToDelete.Length; i++)
+    //     {
+    //         Destroy(alliesToDelete[i]);
+    //     }
+    //     Array.Clear(enemiesToDelete, 0, enemiesToDelete.Length);
+    //     Array.Clear(alliesToDelete, 0, alliesToDelete.Length);
+    // }
 
     public GameObject[] RetrievePathPoints()
     {

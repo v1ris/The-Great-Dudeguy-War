@@ -3972,6 +3972,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3611563242411828952, guid: 414e41df963ed417aa79b90ac3b3b030, type: 3}
+      propertyPath: battleUI
+      value: 
+      objectReference: {fileID: 1981040455}
+    - target: {fileID: 3611563242411828952, guid: 414e41df963ed417aa79b90ac3b3b030, type: 3}
       propertyPath: debugging
       value: 1
       objectReference: {fileID: 0}

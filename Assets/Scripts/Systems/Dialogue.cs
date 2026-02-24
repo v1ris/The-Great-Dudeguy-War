@@ -17,6 +17,7 @@ public class Dialogue : MonoBehaviour
     [SerializeField] private Texture wiseguyPortrait;
     [SerializeField] private AudioManager audioManager;
     [SerializeField] private GameManager gameManager;
+    [SerializeField] private BattleUI battleUI;
     private Label dialogueText;
     private Image dialoguePortrait;
     private VisualElement textBox;
@@ -101,8 +102,6 @@ public class Dialogue : MonoBehaviour
         if (GameManager.LevelRestarted)
         {
             GameManager.LevelRestarted = false;
-            Spawner.Reset();
-            gameManager.StartLevel(GameManager.CurrentLevel);
             gameObject.SetActive(false);
         }
     }
