@@ -46,9 +46,10 @@ public class GameManager : MonoBehaviour
         GameSpeed = 1;
         UpdatePoints(400);
         
-        // ensuring level control bools are correct
+        // ensuring level control is correct
         Fading = false;
         LevelEnded = false;
+        CurrentLevel = int.Parse(SceneManager.GetActiveScene().name[6].ToString()); // gets number in scene name to determine level; just in case for testing
     }
 
     public enum GameState
@@ -62,6 +63,7 @@ public class GameManager : MonoBehaviour
 
     public void StartLevel(int level)
     {
+        print(level);
         screen.style.display = DisplayStyle.Flex;
         fade.AddToClassList("fade-in");
         if (level == 1)

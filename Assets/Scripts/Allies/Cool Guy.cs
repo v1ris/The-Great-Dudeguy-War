@@ -8,7 +8,7 @@ public class CoolGuy : MonoBehaviour
     void Awake()
     {
         baseScript = gameObject.GetComponent<Ally>();
-        baseScript.price = -400;
+        baseScript.price = -800;
         baseScript.sellPrice = 200;
         baseScript.attackDamage = 2;
         baseScript.attackSpeed = .3f;

@@ -379,7 +379,7 @@ public class Dialogue : MonoBehaviour
                 bgm.SetParameter("Fadeout", 1);
                 fade.AddToClassList("fade-out");
                 fading = true;
-                GameManager.CurrentLevel = 1;
+                GameManager.CurrentLevel = 2;
                 break;
             case 28:
                 talkingSFX = audioManager.CreateAudioInstance(RuntimeManager.PathToEventReference("event:/SFX/wiseguy_talk"));
