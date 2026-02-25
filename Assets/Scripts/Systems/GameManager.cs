@@ -48,7 +48,15 @@ public class GameManager : MonoBehaviour
 
         // default game parameter values
         GameSpeed = 1;
-        SetPoints(400);
+        if (CurrentLevel == 1)
+        {
+            SetPoints(200);
+        }
+        if (CurrentLevel == 2)
+        {
+            SetPoints(400);
+        }
+        
         SetLives(50);
 
         if (LevelRestarted)

@@ -1253,13 +1253,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2702806872228441128, guid: 414e41df963ed417aa79b90ac3b3b030, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3611563242411828952, guid: 414e41df963ed417aa79b90ac3b3b030, type: 3}
       propertyPath: battleUI
       value: 
-      objectReference: {fileID: 1981040455}
+      objectReference: {fileID: 123796081}
     - target: {fileID: 3611563242411828952, guid: 414e41df963ed417aa79b90ac3b3b030, type: 3}
       propertyPath: debugging
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3611563242411828952, guid: 414e41df963ed417aa79b90ac3b3b030, type: 3}
       propertyPath: currentLine
@@ -1280,6 +1284,10 @@ PrefabInstance:
     - target: {fileID: 4836640090645697591, guid: 414e41df963ed417aa79b90ac3b3b030, type: 3}
       propertyPath: m_Name
       value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 4871317304246700255, guid: 414e41df963ed417aa79b90ac3b3b030, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7944511869238094796, guid: 414e41df963ed417aa79b90ac3b3b030, type: 3}
       propertyPath: m_LocalPosition.x

@@ -47,6 +47,7 @@ public class Ally : MonoBehaviour
         hasBeenPlaced = false;
     }
     
+    private int triggers; // number of triggers currently active; needs to be 0 in order to be placeable
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Enemy")
@@ -60,11 +61,11 @@ public class Ally : MonoBehaviour
         }
         if (other.gameObject.layer == 8) // layer 8 = allies & path
         {
+            triggers++;
             attackRangeVisual.color = new Color(1, 0, 0, 0.1f);
             canBePlaced = false;
         }
     }
-
     void OnTriggerExit2D(Collider2D other)
     {
         if (other.gameObject.tag == "Enemy")
@@ -73,8 +74,12 @@ public class Ally : MonoBehaviour
         }
         if (other.gameObject.layer == 8) // layer 8 = allies & path
         {
-            attackRangeVisual.color = new Color(1, 1, 1, 0.1f);
-            canBePlaced = true;
+            triggers--;
+             if (triggers == 0)
+             {
+                 attackRangeVisual.color = new Color(1, 1, 1, 0.1f);
+                 canBePlaced = true;
+             }
         }
     }
 
@@ -116,8 +121,6 @@ public class Ally : MonoBehaviour
             }
         }
     }
-    
-    
     
     public void Target()
     {

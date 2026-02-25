@@ -115,10 +115,10 @@ public class BattleUI : MonoBehaviour
     }
     private void OnCoolGuyButtonClicked(ClickEvent evt)
     {
-        if (GameManager.Points >= 800)
+        if (GameManager.Points >= 650)
         {
             GameObject guy = Instantiate(coolGuy, Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()), Quaternion.identity);
-            GameManager.UpdatePoints(-800);
+            GameManager.UpdatePoints(-650);
         }
     }
 }

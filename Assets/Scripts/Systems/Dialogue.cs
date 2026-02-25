@@ -17,7 +17,6 @@ public class Dialogue : MonoBehaviour
     [SerializeField] private Texture wiseguyPortrait;
     [SerializeField] private AudioManager audioManager;
     [SerializeField] private GameManager gameManager;
-    [SerializeField] private BattleUI battleUI;
     private Label dialogueText;
     private Image dialoguePortrait;
     private VisualElement textBox;
