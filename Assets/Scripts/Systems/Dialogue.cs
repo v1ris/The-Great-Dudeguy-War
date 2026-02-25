@@ -101,7 +101,6 @@ public class Dialogue : MonoBehaviour
         // dialogue does not appear upon level restart
         if (GameManager.LevelRestarted)
         {
-            GameManager.LevelRestarted = false;
             gameObject.SetActive(false);
         }
     }

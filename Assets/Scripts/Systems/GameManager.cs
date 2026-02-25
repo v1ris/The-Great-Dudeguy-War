@@ -9,8 +9,7 @@ using UnityEngine.UIElements;
 
 public class GameManager : MonoBehaviour
 {
-    public static int
-        GameSpeed; // multiply into equation for any time-based function of the game; 0 is paused, 1 is normal, 2 is speedup button active
+    public static int GameSpeed; // multiply into equation for any time-based function of the game; 0 is paused, 1 is normal, 2 is speedup button active
 
     public static int Points;
     public static int Lives;
@@ -19,10 +18,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Dialogue dialogue;
     private VisualElement fade;
     private VisualElement screen;
-
-    [SerializeField] private SpriteRenderer lvl1Background;
-    [SerializeField] private SpriteRenderer lvl2Background;
-    [SerializeField] private SpriteRenderer lvl3Background;
 
     [SerializeField] private GameObject pathpoint1;
     [SerializeField] private GameObject pathpoint2;
@@ -42,10 +37,10 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        // ensures level is correct
+        CurrentLevel = int.Parse(SceneManager.GetActiveScene().name[6].ToString()); // gets number in scene name to determine level; just in case for testing
+        
         // disables backgrounds & battle UI by default
-        lvl1Background.enabled = false;
-        lvl2Background.enabled = false;
-        lvl3Background.enabled = false;
         screen = battleUI.rootVisualElement.Q<VisualElement>("screen");
         screen.style.display = DisplayStyle.None;
         fade = battleUI.rootVisualElement.Q<VisualElement>("fade");
@@ -56,11 +51,15 @@ public class GameManager : MonoBehaviour
         SetPoints(400);
         SetLives(50);
 
+        if (LevelRestarted)
+        {
+            StartLevel(CurrentLevel);
+        }
+        
         // ensuring level control is correct
         Fading = false;
         LevelEnded = false;
         LevelRestarted = false;
-        CurrentLevel = int.Parse(SceneManager.GetActiveScene().name[6].ToString()); // gets number in scene name to determine level; just in case for testing
     }
 
     public enum GameState
@@ -76,23 +75,7 @@ public class GameManager : MonoBehaviour
     {
         screen.style.display = DisplayStyle.Flex;
         fade.AddToClassList("fade-in");
-        if (level == 1)
-        {
-            lvl1Background.enabled = true;
-            spawner.LoadWaves(level);
-        }
-
-        if (level == 2)
-        {
-            lvl2Background.enabled = true;
-            spawner.LoadWaves(level);
-        }
-
-        if (level == 3)
-        {
-            lvl3Background.enabled = true;
-            spawner.LoadWaves(level);
-        }
+        spawner.LoadWaves(level);
     }
 
     public static void EndLevel()
@@ -125,39 +108,25 @@ public class GameManager : MonoBehaviour
             {
                 if (SceneManager.GetActiveScene().name == "Level 1" && LevelEnded)
                 {
+                    Fading = false;
                     SceneManager.LoadScene("Level 2");
                 }
 
                 if (SceneManager.GetActiveScene().name == "Level 2" && LevelEnded)
                 {
+                    Fading = false;
                     SceneManager.LoadScene("Level 3");
                 }
                 if (LevelRestarted)
                 {
-                    SceneManager.LoadScene("Level 1");
+                    //fade.RemoveFromClassList("fade-complete");
+                    Spawner.Reset();
+                    Fading = false;
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
                 }
             }
         }
     }
-
-    // private static GameObject[] enemiesToDelete;
-    // private static GameObject[] alliesToDelete;
-    //
-    // public static void RemoveAlliesAndEnemies()
-    // {
-    //     enemiesToDelete = GameObject.FindGameObjectsWithTag("Enemy");
-    //     alliesToDelete = GameObject.FindGameObjectsWithTag("Ally");
-    //     for (int i = 0; i < enemiesToDelete.Length; i++)
-    //     {
-    //         Destroy(enemiesToDelete[i]);
-    //     }
-    //     for (int i = 0; i < alliesToDelete.Length; i++)
-    //     {
-    //         Destroy(alliesToDelete[i]);
-    //     }
-    //     Array.Clear(enemiesToDelete, 0, enemiesToDelete.Length);
-    //     Array.Clear(alliesToDelete, 0, alliesToDelete.Length);
-    // }
 
     public GameObject[] RetrievePathPoints()
     {
@@ -190,7 +159,7 @@ public class GameManager : MonoBehaviour
     
     public static void SetPoints(int points)
     {
-        Points += points;
+        Points = points;
         BattleUI.Points.text = "Points: \n" + Points;
     }
 
