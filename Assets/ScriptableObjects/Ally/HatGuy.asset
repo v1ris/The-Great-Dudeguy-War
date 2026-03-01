@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 529ebb9d31d484ce99967083a443eee4, type: 3}
+  m_Name: HatGuy
+  m_EditorClassIdentifier: Assembly-CSharp::Ally
+  allySprite: {fileID: -779092744848838158, guid: 403d8e2a763d4451a9d067cc71dd157d, type: 3}
+  attackDamage: 1
+  attackSpeed: 0.6
+  bulletTravelSpeed: 4
+  price: 200
+  sellPrice: 100

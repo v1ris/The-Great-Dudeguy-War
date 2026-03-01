@@ -19,9 +19,10 @@ public class BattleUI : MonoBehaviour
     private Button normalGuyButton;
     private Button hatGuyButton;
     private Button coolGuyButton;
-    [SerializeField] GameObject normalGuy;
-    [SerializeField] GameObject hatGuy;
-    [SerializeField] GameObject coolGuy;
+    [SerializeField] private AllyObj allyPrefab;
+    [SerializeField] AllyData normalGuy;
+    [SerializeField] AllyData hatGuy;
+    [SerializeField] AllyData coolGuy;
     
     private GameManager gameManager;
     private Spawner spawner;
@@ -101,7 +102,8 @@ public class BattleUI : MonoBehaviour
     {
         if (GameManager.Points >= 100)
         {
-            GameObject guy = Instantiate(normalGuy, Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()), Quaternion.identity);
+            AllyObj guy = Instantiate(allyPrefab, Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()), Quaternion.identity);
+            guy.LoadData(normalGuy);
             GameManager.UpdatePoints(-100);
         }
     }
@@ -109,7 +111,8 @@ public class BattleUI : MonoBehaviour
     {
         if (GameManager.Points >= 200)
         {
-            GameObject guy = Instantiate(hatGuy, Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()), Quaternion.identity);
+            AllyObj guy = Instantiate(allyPrefab, Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()), Quaternion.identity);
+            guy.LoadData(hatGuy);
             GameManager.UpdatePoints(-200);
         }
     }
@@ -117,7 +120,8 @@ public class BattleUI : MonoBehaviour
     {
         if (GameManager.Points >= 650)
         {
-            GameObject guy = Instantiate(coolGuy, Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()), Quaternion.identity);
+            AllyObj guy = Instantiate(allyPrefab, Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()), Quaternion.identity);
+            guy.LoadData(coolGuy);
             GameManager.UpdatePoints(-650);
         }
     }

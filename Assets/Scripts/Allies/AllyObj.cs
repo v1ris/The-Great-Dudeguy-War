@@ -3,29 +3,26 @@ using FMODUnity;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Ally : MonoBehaviour
+public class AllyObj : MonoBehaviour
 {
-    // stats
-    public int attackDamage;
-    public float attackSpeed;
-    public int bulletTravelSpeed;
-    public int price;
-    public int sellPrice;
+    private AllyData allyStats;
+    [SerializeField] private SpriteRenderer allySprite;
     
     // targeting
-    public List<GameObject> targets;
-    public GameObject currentTarget;
+    public List<EnemyObj> targets;
+    public EnemyObj currentTarget;
     private float currentTargetX;
     private float currentTargetY;
     
     // components in child
+
     [SerializeField] private CircleCollider2D attackRange;
     [SerializeField] private SpriteRenderer attackRangeVisual;
-    [SerializeField] private GameObject bullet;
-    private GameObject shotBullet;
+    [SerializeField] private Bullet bulletPrefab;
+    private Bullet shotBullet;
     
     // placing unit on field
-    private bool hasBeenPlaced = false;
+    [SerializeField] private bool hasBeenPlaced = false;
     private bool canBePlaced = false;
 
     public enum AttackMode
@@ -43,20 +40,26 @@ public class Ally : MonoBehaviour
     {
         attackRangeVisual.color = new Color(1, 1, 1, 0.1f); // attack range is see through
         attackMode = AttackMode.Weakest; // default attack mode to "first"
-        targets = new List<GameObject>();
+        targets = new List<EnemyObj>();
         hasBeenPlaced = false;
+    }
+
+    public void LoadData(AllyData allyData)
+    {
+        allyStats = allyData;
+        allySprite.sprite = allyData.allySprite;
     }
     
     private int triggers; // number of triggers currently active; needs to be 0 in order to be placeable
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Enemy")
+        if (other.gameObject.CompareTag("Enemy"))
         {
-            targets.Add(other.gameObject);
+            targets.Add(other.GetComponent<EnemyObj>());
             // ensures list of targets always has something
             if (targets.Count == 1)
             {
-                currentTarget = other.gameObject;
+                currentTarget = other.GetComponent<EnemyObj>();
             }
         }
         if (other.gameObject.layer == 8) // layer 8 = allies & path
@@ -68,9 +71,9 @@ public class Ally : MonoBehaviour
     }
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Enemy")
+        if (other.gameObject.CompareTag("Enemy"))
         {
-            targets.Remove(other.gameObject);
+            targets.Remove(other.GetComponent<EnemyObj>());
         }
         if (other.gameObject.layer == 8) // layer 8 = allies & path
         {
@@ -105,17 +108,17 @@ public class Ally : MonoBehaviour
         
             // attacking
             // starts timer when there is no enemy in sight
-            if (bulletTimer < attackSpeed)
+            if (bulletTimer < allyStats.attackSpeed)
             {
                 bulletTimer += Time.deltaTime * GameManager.GameSpeed;
             }
             // makes sure there is some target to choose from
             if (targets.Count != 0)
             {
-                if (bulletTimer > attackSpeed)
+                if (bulletTimer > allyStats.attackSpeed)
                 {
-                    shotBullet = Instantiate(bullet, transform.position, Quaternion.identity);
-                    shotBullet.GetComponent<Bullet>().Shoot(attackDamage, bulletTravelSpeed, currentTarget, gameObject);
+                    shotBullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+                    shotBullet.Shoot(allyStats.attackDamage, allyStats.bulletTravelSpeed,  currentTarget, this);
                     bulletTimer = 0f;
                 }
             }
@@ -153,10 +156,10 @@ public class Ally : MonoBehaviour
                 int targetCurrentHealth = 0;
                 for (int i = 0; i < targets.Count; i++)
                 {
-                    if (targets[i].GetComponent<Enemy>().health > targetCurrentHealth)
+                    if (targets[i].currentHealth > targetCurrentHealth)
                     {
                         currentTarget = targets[i];
-                        targetCurrentHealth = targets[i].GetComponent<Enemy>().health;
+                        targetCurrentHealth = targets[i].currentHealth;
                     }
                 }
             }
@@ -165,10 +168,10 @@ public class Ally : MonoBehaviour
                 int targetCurrentHealth = 999;
                 for (int i = 0; i < targets.Count; i++)
                 {
-                    if (targets[i].GetComponent<Enemy>().health < targetCurrentHealth)
+                    if (targets[i].currentHealth < targetCurrentHealth)
                     {
                         currentTarget = targets[i];
-                        targetCurrentHealth = targets[i].GetComponent<Enemy>().health;
+                        targetCurrentHealth = targets[i].currentHealth;
                     }
                 }
             }

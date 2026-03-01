@@ -44,7 +44,85 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2389d7f8b29be4adc8aca487508855d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Spawner
-  circleDude: {fileID: 8958821937230525550, guid: 5c595460f3b2e45e38347e795f5b0ca4, type: 3}
-  triangleDude: {fileID: 8958821937230525550, guid: d403193ede8f5489889dda08b580dcf9, type: 3}
-  squareDude: {fileID: 8958821937230525550, guid: f48fd2daa24f04696b7b702686866def, type: 3}
+  enemyPrefab: {fileID: 8713797611240104033, guid: 5c595460f3b2e45e38347e795f5b0ca4, type: 3}
+  levels:
+  - waves:
+    - waveEnemies:
+      - {fileID: 11400000, guid: 5f944a7374d624746ab856d0dd8b377f, type: 2}
+      - {fileID: 11400000, guid: 5f944a7374d624746ab856d0dd8b377f, type: 2}
+      - {fileID: 11400000, guid: 5f944a7374d624746ab856d0dd8b377f, type: 2}
+      - {fileID: 11400000, guid: 5f944a7374d624746ab856d0dd8b377f, type: 2}
+      - {fileID: 11400000, guid: 5f944a7374d624746ab856d0dd8b377f, type: 2}
+    - waveEnemies:
+      - {fileID: 11400000, guid: 5f944a7374d624746ab856d0dd8b377f, type: 2}
+      - {fileID: 11400000, guid: 5f944a7374d624746ab856d0dd8b377f, type: 2}
+      - {fileID: 11400000, guid: 5f944a7374d624746ab856d0dd8b377f, type: 2}
+      - {fileID: 11400000, guid: 5f944a7374d624746ab856d0dd8b377f, type: 2}
+      - {fileID: 11400000, guid: 5f944a7374d624746ab856d0dd8b377f, type: 2}
+      - {fileID: 11400000, guid: 5f944a7374d624746ab856d0dd8b377f, type: 2}
+      - {fileID: 11400000, guid: 5f944a7374d624746ab856d0dd8b377f, type: 2}
+      - {fileID: 11400000, guid: 5f944a7374d624746ab856d0dd8b377f, type: 2}
+      - {fileID: 11400000, guid: 5f944a7374d624746ab856d0dd8b377f, type: 2}
+      - {fileID: 11400000, guid: 5f944a7374d624746ab856d0dd8b377f, type: 2}
+    - waveEnemies:
+      - {fileID: 11400000, guid: 788a5e5e709ea8c45950c9bf19d07596, type: 2}
+      - {fileID: 11400000, guid: 5f944a7374d624746ab856d0dd8b377f, type: 2}
+      - {fileID: 11400000, guid: 788a5e5e709ea8c45950c9bf19d07596, type: 2}
+      - {fileID: 11400000, guid: 5f944a7374d624746ab856d0dd8b377f, type: 2}
+      - {fileID: 11400000, guid: 788a5e5e709ea8c45950c9bf19d07596, type: 2}
+      - {fileID: 11400000, guid: 788a5e5e709ea8c45950c9bf19d07596, type: 2}
+      - {fileID: 11400000, guid: 788a5e5e709ea8c45950c9bf19d07596, type: 2}
+    - waveEnemies:
+      - {fileID: 11400000, guid: 788a5e5e709ea8c45950c9bf19d07596, type: 2}
+      - {fileID: 11400000, guid: 788a5e5e709ea8c45950c9bf19d07596, type: 2}
+      - {fileID: 11400000, guid: 788a5e5e709ea8c45950c9bf19d07596, type: 2}
+      - {fileID: 11400000, guid: 788a5e5e709ea8c45950c9bf19d07596, type: 2}
+      - {fileID: 11400000, guid: 788a5e5e709ea8c45950c9bf19d07596, type: 2}
+      - {fileID: 11400000, guid: 788a5e5e709ea8c45950c9bf19d07596, type: 2}
+      - {fileID: 11400000, guid: 788a5e5e709ea8c45950c9bf19d07596, type: 2}
+      - {fileID: 11400000, guid: 788a5e5e709ea8c45950c9bf19d07596, type: 2}
+      - {fileID: 11400000, guid: 788a5e5e709ea8c45950c9bf19d07596, type: 2}
+      - {fileID: 11400000, guid: 788a5e5e709ea8c45950c9bf19d07596, type: 2}
+      - {fileID: 11400000, guid: 30a171ef9a8024949b3fa3c0bc63e38f, type: 2}
+  - waves:
+    - waveEnemies:
+      - {fileID: 11400000, guid: 5f944a7374d624746ab856d0dd8b377f, type: 2}
+      - {fileID: 11400000, guid: 5f944a7374d624746ab856d0dd8b377f, type: 2}
+      - {fileID: 11400000, guid: 788a5e5e709ea8c45950c9bf19d07596, type: 2}
+      - {fileID: 11400000, guid: 788a5e5e709ea8c45950c9bf19d07596, type: 2}
+      - {fileID: 11400000, guid: 788a5e5e709ea8c45950c9bf19d07596, type: 2}
+    - waveEnemies:
+      - {fileID: 11400000, guid: 5f944a7374d624746ab856d0dd8b377f, type: 2}
+      - {fileID: 11400000, guid: 5f944a7374d624746ab856d0dd8b377f, type: 2}
+      - {fileID: 11400000, guid: 5f944a7374d624746ab856d0dd8b377f, type: 2}
+      - {fileID: 11400000, guid: 5f944a7374d624746ab856d0dd8b377f, type: 2}
+      - {fileID: 11400000, guid: 5f944a7374d624746ab856d0dd8b377f, type: 2}
+      - {fileID: 11400000, guid: 788a5e5e709ea8c45950c9bf19d07596, type: 2}
+      - {fileID: 11400000, guid: 788a5e5e709ea8c45950c9bf19d07596, type: 2}
+      - {fileID: 11400000, guid: 788a5e5e709ea8c45950c9bf19d07596, type: 2}
+      - {fileID: 11400000, guid: 788a5e5e709ea8c45950c9bf19d07596, type: 2}
+      - {fileID: 11400000, guid: 788a5e5e709ea8c45950c9bf19d07596, type: 2}
+    - waveEnemies:
+      - {fileID: 11400000, guid: 5f944a7374d624746ab856d0dd8b377f, type: 2}
+      - {fileID: 11400000, guid: 788a5e5e709ea8c45950c9bf19d07596, type: 2}
+      - {fileID: 11400000, guid: 30a171ef9a8024949b3fa3c0bc63e38f, type: 2}
+      - {fileID: 11400000, guid: 5f944a7374d624746ab856d0dd8b377f, type: 2}
+      - {fileID: 11400000, guid: 788a5e5e709ea8c45950c9bf19d07596, type: 2}
+      - {fileID: 11400000, guid: 788a5e5e709ea8c45950c9bf19d07596, type: 2}
+    - waveEnemies:
+      - {fileID: 11400000, guid: 30a171ef9a8024949b3fa3c0bc63e38f, type: 2}
+      - {fileID: 11400000, guid: 788a5e5e709ea8c45950c9bf19d07596, type: 2}
+      - {fileID: 11400000, guid: 788a5e5e709ea8c45950c9bf19d07596, type: 2}
+      - {fileID: 11400000, guid: 788a5e5e709ea8c45950c9bf19d07596, type: 2}
+      - {fileID: 11400000, guid: 788a5e5e709ea8c45950c9bf19d07596, type: 2}
+      - {fileID: 11400000, guid: 788a5e5e709ea8c45950c9bf19d07596, type: 2}
+      - {fileID: 11400000, guid: 788a5e5e709ea8c45950c9bf19d07596, type: 2}
+      - {fileID: 11400000, guid: 788a5e5e709ea8c45950c9bf19d07596, type: 2}
+      - {fileID: 11400000, guid: 788a5e5e709ea8c45950c9bf19d07596, type: 2}
+      - {fileID: 11400000, guid: 30a171ef9a8024949b3fa3c0bc63e38f, type: 2}
+    - waveEnemies:
+      - {fileID: 11400000, guid: 30a171ef9a8024949b3fa3c0bc63e38f, type: 2}
+      - {fileID: 11400000, guid: 30a171ef9a8024949b3fa3c0bc63e38f, type: 2}
+      - {fileID: 11400000, guid: 30a171ef9a8024949b3fa3c0bc63e38f, type: 2}
+      - {fileID: 11400000, guid: 30a171ef9a8024949b3fa3c0bc63e38f, type: 2}
   gameManager: {fileID: 0}

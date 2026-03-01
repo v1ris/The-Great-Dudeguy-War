@@ -3,13 +3,12 @@ using FMODUnity;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class EnemyObj : MonoBehaviour
 {
-    // stats
-    public int health;
-    public int maxHealth;
-    public float moveSpeed;
-    public int droppedMoney;
+    public EnemyData enemyData;
+
+    //display
+    [SerializeField] private SpriteRenderer renderer; 
     
     // pathing
     private int pathPointIndex;
@@ -20,6 +19,10 @@ public class Enemy : MonoBehaviour
     [SerializeField] private GameObject healthBarReference;
     private GameObject healthBar;
     public GameObject greenHealthBar;
+    
+    //health
+    public int currentHealth;
+    public bool isDead = false;
     
     void Start()
     {
@@ -33,12 +36,19 @@ public class Enemy : MonoBehaviour
         healthBar.transform.parent = gameObject.transform;
         greenHealthBar = healthBar.transform.GetChild(1).gameObject;
     }
+
+    public void LoadData(EnemyData data)
+    {
+        enemyData = data; 
+        currentHealth = data.maxHealth;
+        renderer.sprite = data.enemySprite;
+    }
     
     void Update()
     {
         // pathing
         // getting temp values
-        float distance = moveSpeed * Time.deltaTime;
+        float distance = enemyData.moveSpeed * Time.deltaTime;
         Vector2 pathPointTransform = gameManager.RetrievePathPoints()[pathPointIndex].transform.position;
         // move towards path point
         transform.position = Vector2.MoveTowards(transform.position, pathPointTransform, distance * GameManager.GameSpeed);
@@ -47,17 +57,33 @@ public class Enemy : MonoBehaviour
             pathPointIndex++;
             if (pathPointIndex >= gameManager.RetrievePathPoints().Length)
             {
-                GameManager.UpdateLives(health);
+                GameManager.UpdateLives(currentHealth);
                 Destroy(gameObject);
             }
         }
     }
-    
+
+    public void UpdateHealth(int amountToSubtract)
+    {
+        currentHealth -= amountToSubtract;
+        if (currentHealth <= 0)
+        {
+            isDead = true;   
+        }
+        // update health bar
+        greenHealthBar.transform.localScale = new Vector3((float)currentHealth / enemyData.maxHealth, .2f, 1); // .2f is to make the square sprite into a long rectangle
+    }
+
+
+    public bool GetIsDead()
+    {
+        return isDead;
+    }
 
     void OnDestroy()
     {
         Spawner.DeadEnemies++;
-        GameManager.UpdatePoints(droppedMoney);
+        GameManager.UpdatePoints(enemyData.droppedMoney);
         
         // play sound
         RuntimeManager.PlayOneShot("event:/SFX/dude_hurt");
