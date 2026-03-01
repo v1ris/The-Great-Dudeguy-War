@@ -11,11 +11,10 @@ GameObject:
   - component: {fileID: 6574015397270175607}
   - component: {fileID: -3825927689586843485}
   - component: {fileID: 8713797611240104033}
-  - component: {fileID: 1070791513655388203}
   - component: {fileID: 8812127429314828562}
   - component: {fileID: -7650865443658845635}
   m_Layer: 7
-  m_Name: Triangle Dude
+  m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -85,7 +84,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 1409739158404348952, guid: f58ad128f7553429fbcda826d4663a40, type: 3}
+  m_Sprite: {fileID: 7427398472212497054, guid: 4a30fa58b7dcb4656985c72aba818e2c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -107,22 +106,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d122654513c2848acb922ba531af3c1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  health: 0
-  moveSpeed: 0
-  droppedMoney: 0
+  enemyData: {fileID: 0}
+  renderer: {fileID: -3825927689586843485}
   healthBarReference: {fileID: 5842585253495504878, guid: 45e8e9c8aab8a4f7db85c00dbd2c0e6a, type: 3}
---- !u!114 &1070791513655388203
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8958821937230525550}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b31e609ac504440fcb4fd74935fc75d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TriangleDude
+  greenHealthBar: {fileID: 0}
+  currentHealth: 0
+  isDead: 0
 --- !u!60 &8812127429314828562
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -161,7 +150,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.38, y: 0.36}
+    oldSize: {x: 0.33, y: 0.33}
     newSize: {x: 0.33, y: 0.33}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -169,9 +158,14 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.18833357, y: -0.17282864}
-      - {x: 0.18411578, y: -0.17246282}
-      - {x: 0.0016932562, y: 0.17369893}
+    - - {x: -0.078653485, y: 0.14363286}
+      - {x: -0.14995135, y: 0.055410713}
+      - {x: -0.15393911, y: -0.039997473}
+      - {x: -0.081059106, y: -0.13610853}
+      - {x: 0.07490475, y: -0.13731235}
+      - {x: 0.1519078, y: -0.046409182}
+      - {x: 0.14581391, y: 0.04690241}
+      - {x: 0.08550963, y: 0.14446035}
   m_UseDelaunayMesh: 1
 --- !u!50 &-7650865443658845635
 Rigidbody2D:

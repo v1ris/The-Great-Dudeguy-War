@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8237752478532684708}
   - component: {fileID: 2866314082154789257}
   m_Layer: 7
-  m_Name: Hat Guy Attack Range
+  m_Name: Attack Range
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4.3, y: 4.3, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 441650809584012514}
@@ -138,12 +138,11 @@ GameObject:
   m_Component:
   - component: {fileID: 441650809584012514}
   - component: {fileID: 4080648600323388521}
-  - component: {fileID: 3292050564232125440}
-  - component: {fileID: 4056013865967677223}
   - component: {fileID: 4301331978533584962}
   - component: {fileID: 7450424944622809763}
+  - component: {fileID: 3682690800171415581}
   m_Layer: 8
-  m_Name: Hat Guy
+  m_Name: Ally
   m_TagString: Ally
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -214,7 +213,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -779092744848838158, guid: 403d8e2a763d4451a9d067cc71dd157d, type: 3}
+  m_Sprite: {fileID: -1790958579001344819, guid: 2021b21dd90ca4f5c8bfa535d4651316, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -224,40 +223,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &3292050564232125440
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5077603898165420404}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 529ebb9d31d484ce99967083a443eee4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Ally
-  attackDamage: 0
-  attackSpeed: 0
-  bulletTravelSpeed: 0
-  price: 0
-  sellPrice: 0
-  targets: []
-  currentTarget: {fileID: 0}
-  attackRange: {fileID: 2866314082154789257}
-  attackRangeVisual: {fileID: 8237752478532684708}
-  bullet: {fileID: 7694042814437570017, guid: 1e861627f12f0428e8304b93b0b49f38, type: 3}
---- !u!114 &4056013865967677223
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5077603898165420404}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6ed2139dacc0472291cb7daacd71bf2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HatGuy
 --- !u!50 &4301331978533584962
 Rigidbody2D:
   serializedVersion: 5
@@ -323,7 +288,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.5, y: 1.01}
+    oldSize: {x: 0.44, y: 0.82}
     newSize: {x: 0.44, y: 0.82}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -331,3 +296,22 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.35002792, y: 0.5110544}
   m_EdgeRadius: 0
+--- !u!114 &3682690800171415581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5077603898165420404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ab3f9b289d52e142852e0feaa009fb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AllyObj
+  allySprite: {fileID: 4080648600323388521}
+  targets: []
+  currentTarget: {fileID: 0}
+  attackRange: {fileID: 2866314082154789257}
+  attackRangeVisual: {fileID: 8237752478532684708}
+  bulletPrefab: {fileID: 6441196130929406480, guid: 1e861627f12f0428e8304b93b0b49f38, type: 3}
+  hasBeenPlaced: 0

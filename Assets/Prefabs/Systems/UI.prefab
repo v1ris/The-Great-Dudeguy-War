@@ -48,7 +48,7 @@ MonoBehaviour:
   m_PanelSettings: {fileID: 11400000, guid: b276e0c55b5204ef8abecc6572f1b2ee, type: 2}
   m_ParentUI: {fileID: 0}
   sourceAsset: {fileID: 9197481963319205126, guid: 6120f6dfcb1164504818c7736d73cd72, type: 3}
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Position: 0
   m_WorldSpaceSizeMode: 1
   m_WorldSpaceWidth: 1920
@@ -147,9 +147,10 @@ MonoBehaviour:
   waveStart: {fileID: 2800000, guid: ad4da9681365242f3be89f24a31b97bf, type: 3}
   wavePause: {fileID: 2800000, guid: 3cfbdf4539d024beb98ca22eb03dbb45, type: 3}
   waveFastForward: {fileID: 2800000, guid: e8f5550bb5c644702b1edd37eb3423e7, type: 3}
-  normalGuy: {fileID: 5077603898165420404, guid: 91a358e5046d14ed2b719653c45c7502, type: 3}
-  hatGuy: {fileID: 5077603898165420404, guid: d7489238f7e424ed0beb78f750dd8d1e, type: 3}
-  coolGuy: {fileID: 5077603898165420404, guid: 6c4b7ba8afe6442e0b186cc3b2746df9, type: 3}
+  allyPrefab: {fileID: 3682690800171415581, guid: 6c4b7ba8afe6442e0b186cc3b2746df9, type: 3}
+  normalGuy: {fileID: 11400000, guid: 13221a3207781af42bb492f1e8165894, type: 2}
+  hatGuy: {fileID: 11400000, guid: 4790f08d2a2d42946b4f4d8a6850a9a9, type: 2}
+  coolGuy: {fileID: 11400000, guid: 74db6eece0facbb4696f31b76e62eac9, type: 2}
 --- !u!1 &4836640090645697591
 GameObject:
   m_ObjectHideFlags: 0

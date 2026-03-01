@@ -931,17 +931,6 @@ Transform:
   - {fileID: 1797150187}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1981040455 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5156941851761044287, guid: 414e41df963ed417aa79b90ac3b3b030, type: 3}
-  m_PrefabInstance: {fileID: 7898699088130722723}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35631385f8d024e42a5957027efc3a08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BattleUI
 --- !u!114 &1997402924 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7466582721100974192, guid: e40f8425d94bd437cacc3c186390156e, type: 3}
@@ -1132,10 +1121,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 479142202473706500, guid: 47634fbcccf824033955964b7403452b, type: 3}
-      propertyPath: ui
-      value: 
-      objectReference: {fileID: 1981040455}
-    - target: {fileID: 479142202473706500, guid: 47634fbcccf824033955964b7403452b, type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 1997402924}
@@ -1253,30 +1238,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2702806872228441128, guid: 414e41df963ed417aa79b90ac3b3b030, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3611563242411828952, guid: 414e41df963ed417aa79b90ac3b3b030, type: 3}
-      propertyPath: battleUI
-      value: 
-      objectReference: {fileID: 123796081}
-    - target: {fileID: 3611563242411828952, guid: 414e41df963ed417aa79b90ac3b3b030, type: 3}
-      propertyPath: debugging
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3611563242411828952, guid: 414e41df963ed417aa79b90ac3b3b030, type: 3}
-      propertyPath: currentLine
-      value: 16
-      objectReference: {fileID: 0}
     - target: {fileID: 3611563242411828952, guid: 414e41df963ed417aa79b90ac3b3b030, type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 1997402924}
-    - target: {fileID: 3611563242411828952, guid: 414e41df963ed417aa79b90ac3b3b030, type: 3}
-      propertyPath: scrollSpeed
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3611563242411828952, guid: 414e41df963ed417aa79b90ac3b3b030, type: 3}
       propertyPath: audioManager
       value: 
@@ -1284,10 +1249,6 @@ PrefabInstance:
     - target: {fileID: 4836640090645697591, guid: 414e41df963ed417aa79b90ac3b3b030, type: 3}
       propertyPath: m_Name
       value: UI
-      objectReference: {fileID: 0}
-    - target: {fileID: 4871317304246700255, guid: 414e41df963ed417aa79b90ac3b3b030, type: 3}
-      propertyPath: m_SortingOrder
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7944511869238094796, guid: 414e41df963ed417aa79b90ac3b3b030, type: 3}
       propertyPath: m_LocalPosition.x
